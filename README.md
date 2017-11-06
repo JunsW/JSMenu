@@ -20,33 +20,33 @@
  
     
 ### 2. 委托代理
-####1.设置代理 
+__1.设置代理__
 
     popoverView.delegate = self
     
     
-####2.设置`baseView`。整个`PopoverView`将加载到`baseView`上
+__2.设置`baseView`。整个`PopoverView`将加载到`baseView`上__
 
 	 var baseView: UIView { return self.view }
 
 
-####3.1 获取点击事件
+__3.1 获取点击事件__
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, didSelectedAt indexPath: IndexPath) 
-####3.2 获取编辑完成后的更新数据
+__3.2 获取编辑完成后的更新数据__
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String])
 ### 3. 显示
 有两种显示方法——自动切换和手动的显示取消。
-####1. 快速切换。显示的时候调用将取消，没有显示的时候调用将显示
+__1. 快速切换。显示的时候调用将取消，没有显示的时候调用将显示__
 
         popoverView.quickSwitch()
 
-####2.1 手动显示
+__2.1 手动显示__
 
         popoverView.show() { print("I'm coming") } 
 
-####2.2 手动取消
+__2.2 手动取消__
 
         popoverView.dismiss() { print("See ya") } 
 ###TODO
@@ -55,4 +55,4 @@
 3. 没有进行性能测试。
 ###使用JSPopoverView软件
 
-![云洞](https://img.shields.io/badge/swift-4.0-orange.svg)
+![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Asset/CloudHole.png)
