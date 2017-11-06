@@ -28,7 +28,7 @@ extension PopoverMenuView {
         menuCollection.dataSource = self
         menuCollection.tag = 10011
     }
-    /// 返回 顶部视图 可以重写
+    /// 设置 顶部视图 可以重写
     open func setupHeaderView() {
         headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 30))
         headerView.tag = 10015
@@ -49,13 +49,13 @@ extension PopoverMenuView {
     }
     
     @objc func leftHeaderButtonTapped(sender leftButton: JSHeaderButton) {
-        print("Left Button Tapped")
+        print("Ohh **! man xue fu huo!")
         if leftButton.currentState == JSButtonState.reset {
             resetMenu(forEdting: true)
         }
     }
     @objc func rightHeaderButtonTapped(sender rightButton: JSHeaderButton) {
-        print("Mayday! Mayday! It's the right button of the header")
+        print("Mayday! Mayday! Right wing under attack!")
         
         let leftButton = headerView.viewWithTag(10012) as! JSHeaderButton
         if rightButton.currentState == JSButtonState.done {// 退出编辑
@@ -65,19 +65,10 @@ extension PopoverMenuView {
         } else { // 进入编辑
             rightButton.switchTo(state: .done)
             leftButton.switchTo(state: .reset)
-//            menuCollection.allowsSelection = false
             startEditing() // 开始编辑
         }
     }
-    private func swiftLeftButton(_ button: UIButton) {
-        if button.isEnabled {
-            button.isEnabled = false
-            button.setAttributedTitle(NSAttributedString(string: "类别", attributes: [NSAttributedStringKey.foregroundColor:  defaultTextColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]), for: .normal)
-        } else {
-            button.isEnabled = true
-            button.setAttributedTitle(NSAttributedString(string: "复原", attributes: [NSAttributedStringKey.foregroundColor: selectedTextColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]), for: .normal)
-        }
-    }
+    
     /// 开始编辑调用 添加拖动手势
     private func startEditing() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.gestureHandler(gesture:)))
@@ -88,14 +79,9 @@ extension PopoverMenuView {
     }
     /// 完成编辑 保存编辑结果
     private func finishEditing() {
-        for (offset, index) in deletedCells.enumerated() {
-            print("offset: \(offset), index: \(index)")
-            dynamicData.remove(at: index-offset)
-            menuCollection.deleteItems(at: [IndexPath(row: index-offset, section: 0)])
-        }
-        
+
         // 更新数据源 删除删除按钮和添加按钮
-        for _ in 1...2 {
+        for _ in 1...deletedCells.count+2 {
             dynamicData.removeLast()
             menuCollection.deleteItems(at: [IndexPath(row: dynamicData.count, section: 0)]) // 因为已经removeLast()所以不用-1
         }
@@ -103,7 +89,7 @@ extension PopoverMenuView {
         data = dynamicData
         // 通知控制器
 //        editCompleted()
-//        delegate.popoverMenu?(self, dataUpdated: data)
+        delegate.popoverMenu(self, updatedData: data)
         // 重置寄存器
         deletedCells = []
         isCollectionViewEditing = false
@@ -118,16 +104,12 @@ extension PopoverMenuView {
         resetMenu(forEdting: false)
     }
     
-    //FIXME: 恢复之后删除可能无法进行
-    //TODO: 使用动画形式还原 暂时只实现了待删除项的恢复动画
+    //FIXME: 没有恢复交换过但没有删除的Cell 只对特殊按钮后面的待删除项进行还原
     
     /// 重置编辑数据 恢复至编辑开始的状态
     private func resetMenu(forEdting: Bool) {
 
         if forEdting {
-//            dynamicData = data // 动画形式不需要
-//            dynamicData.append(contentsOf: ["delete", "add"])
-//            menuCollection.reloadData()// no need
             resetCells()
         } else {
             // 直接丢弃 从cancel调用
@@ -139,22 +121,49 @@ extension PopoverMenuView {
     }
     /// 复原cell动画
     private func resetCells() {
-        deletedCells.enumerated().reversed().forEach() {
-            let fromIndex = IndexPath(row: $1, section: 0)
-            let title = (self.menuCollection.cellForItem(at: fromIndex) as! JSMenuCell).label!.text
-            let toIndex = IndexPath(row: (self.data.index(of: title!))!, section: 0)
-            // 交换数据源
-            let tmp = dynamicData[fromIndex.row]
-            dynamicData[fromIndex.row] = dynamicData[toIndex.row]
-            dynamicData[toIndex.row] = tmp
-            //改变样式
-            dischargeCell(at: fromIndex)
-            // 交换cell
-            menuCollection.moveItem(at: fromIndex, to: toIndex )
+        var indexes = getOrignialIndexes(of: dynamicData)
+        deletedCells = []
+        var staticIndexes = indexes
+        for _ in 1...staticIndexes.count {
+            if let last = staticIndexes.popLast(), last != 99 { // last 是原始序号
+                let lastItem = dynamicData.popLast()!
+                let p = findPosition(of: last, in: indexes)
+                print("Gonna move last: \(last) to new position: \(p)")
+                indexes.insert(last, at: p) // 同步更新
+                dynamicData.insert(lastItem, at: p) // 更新数据源
+                menuCollection.moveItem(at: IndexPath.ofRow(dynamicData.count-1), to: IndexPath.ofRow(p)) // 更新CollectionView 每次更新都是dynamicData的最后一项
+                dischargeCell(at: IndexPath.ofRow(p))
+            } else {
+                break //return
+            }
         }
+        
     }
+    private func findPosition(of item: Int, in array: [Int] ) -> Int {
+        for (key, element) in array.enumerated() { if item < element { return key } }
+        return array.count-1-2 // 最大一个 除掉两个特殊按钮
+    }
+    /// 找到最初的序号以排序恢复
+    private func getOrignialIndexes(of array: [String]) -> [Int] {
+        return array.map(){ self.data.index(of: $0) ?? 99 } // 使特殊按钮的值尽可能大，这样不会移动到它们后面去
+    }
+    /// 恢复cell样式
     private func dischargeCell(at indexPath: IndexPath) {
         let cell = menuCollection.cellForItem(at: indexPath) as! JSMenuCell
         cell.discharged()
+    }
+    /// 恢复单个被删除的Cell 响应点击事件
+    internal func recoverCell(from index: IndexPath) {
+        
+        let cell = menuCollection.cellForItem(at: index) as! JSMenuCell
+        let toIndex = IndexPath(row: data.index(of: cell.label!.text!)!, section: 0)
+        // 更新数据源
+        let element = dynamicData[index.row]
+        dynamicData.remove(at: index.row)
+        dynamicData.insert(element, at: toIndex.row)
+        
+        print("move: \(index), to index: \(toIndex), dynamicData: \(dynamicData)")
+        menuCollection.moveItem(at: index, to: toIndex)
+        
     }
 }

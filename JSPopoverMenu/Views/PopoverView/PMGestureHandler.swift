@@ -19,12 +19,8 @@ extension PopoverMenuView {
         }
     }
     private func panBegan(gesture: UIPanGestureRecognizer)  {
-//        guard let selectedIndexPath = menuCollection.indexPathForItem(at: gesture.location(in: menuCollection)),
-//            !(deletedCells.contains(selectedIndexPath.row)),
-//            !([deleteButtonIndex, addButtonIndex].contains(selectedIndexPath.row)) else { return }
         guard let selectedIndexPath = menuCollection.indexPathForItem(at: gesture.location(in: menuCollection)),
             (selectedIndexPath.row < deleteButtonIndex) else { return }
-        print("pan begin======")
         selectedIndex = selectedIndexPath
         (menuCollection.cellForItem(at: selectedIndexPath) as! JSMenuCell).detained()
 
@@ -35,29 +31,20 @@ extension PopoverMenuView {
     }
     private func panChanged(gesture: UIPanGestureRecognizer)  {
         guard let beginningIndex = selectedIndex else { return }
-        print("Changed 1")
         // 1. 添加AnimationCell
         let point = gesture.location(in: menuCollection)
         animationCell?.center = point
         animationCell?.isHidden = false
         // 2. 获取当前坐标对应的cell
         guard let index = menuCollection.indexPathForItem(at: point) else { return }
-        print("Changed 2")
 //                print("Move at index: \(index), seletedIndex: \(selectedIndex), endingIndex: \(panEndingIndex)")
         // 3. 如果Cell.index是自身或者上一个交换的cell 则不执行 否则会一直交换
         guard index != selectedIndex, index != panEndingIndex ?? nil else { return }
         needDelete = false
         panEndingIndex = index
-//        let deleteCellIndex = dynamicData.count - 2 - deletedCells.count
-//        let addCellIndx = dynamicData.count - 1 - deletedCells.count
-//        print("\(dynamicData.count) cells in total. delete cell index: \(deleteCellIndex), add cell index: \(addCellIndx)")
         // 4. 如果是添加按钮 或者 删除按钮 则不移动
-        print("Delete button: \(deleteButtonIndex), add buttion: \(addButtonIndex)")
         if index.row != deleteButtonIndex && index.row != addButtonIndex {
-//            let t1 = menuCollection.cellForItem(at: beginningIndex) as! JSMenuCell
-//            let t2 = menuCollection.cellForItem(at: index) as! JSMenuCell
-//            print("move \(t1.label?.text): \(beginningIndex)) to index: \(t2.label?.text): \(index)")
-            
+
             // 交换Cell 交换之后 indexPath也会更新 所以数据原也要更新
             let tmp = dynamicData[beginningIndex.row]
             dynamicData[beginningIndex.row] = dynamicData[index.row]
@@ -67,15 +54,12 @@ extension PopoverMenuView {
             selectedIndex = index
         } else {
             // 标记为待删除
-            print("gonna delete")
             needDelete = true
         }
     }
     private func panEnded(gesture: UIPanGestureRecognizer)  {
         guard animationCell != nil else { return }
         let cell = menuCollection.cellForItem(at: selectedIndex!) as! JSMenuCell
-
-        print("need delete: \(needDelete ?? false)")
         
         if needDelete ?? false { // 首次拖动到空的地方为空
             // 添加撤销操作
@@ -89,7 +73,6 @@ extension PopoverMenuView {
             dynamicData.remove(at: selectedIndex!.row)
             dynamicData.append(tmp)
             deletedCells.append(dynamicData.count - 1) // 添加至待删除
-            print("deleted cells \(deletedCells)")
 //            (menuCollection.cellForItem(at: IndexPath(row:  dynamicData.count - 1, section: 0)) as! JSMenuCell).detained() // 每次新删除的项目肯定在最后
         } else { cell.discharged() }
 

@@ -13,11 +13,9 @@ extension MainViewController: JSPopoverMenuViewDelegate {
     
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, didSelectedAt indexPath: IndexPath) {
-        print("I've been tapped: \(indexPath)")
+        print("Don't mess up with me: \(indexPath)")
     }
     func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String]) {
-//        let a = data.reduce("") {
-//            $0 += $1
-//        }
+        displayerLabel.text = reduceArray(data)
     }
 }

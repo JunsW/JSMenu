@@ -26,21 +26,19 @@ extension PopoverMenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("I've been chosen! Help : \(indexPath)")
         let cell = collectionView.cellForItem(at: indexPath) as! JSMenuCell
+        print("cell title: \(cell.label!.text!)")
         if (cell.label != nil) {
             cell.discharged()
             recoverCell(from: indexPath)
-            deletedCells.remove(at: 7 - indexPath.row)
+//            dynamicData.remove(at: indexPath.row)
+            deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
         } else {
             // Add
         }
        
 //        delegate.popoverMenu(self, didSelectedAt: indexPath)
     }
-    func recoverCell(from index: IndexPath) {
-        let cell = menuCollection.cellForItem(at: index) as! JSMenuCell
-        let toIndex = IndexPath(row: data.index(of: cell.label!.text!)!, section: 0)
-        menuCollection.moveItem(at: index, to: toIndex)
-    }
+    
 }
 
 extension PopoverMenuView: UICollectionViewDataSource {

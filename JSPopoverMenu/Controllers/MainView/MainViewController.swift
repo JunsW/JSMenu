@@ -11,9 +11,9 @@ import UIKit
 class MainViewController: UIViewController  {
 
     lazy var midButton = UIButton(type:  .system)
-    lazy var transition = PopoverTransitionDelegate()
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    let defaultData = ["一二", "三四", "五六", "七八", "九十", "溢出"]
     
     var popoverView: PopoverMenuView!
     var displayerLabel: UILabel!
@@ -24,8 +24,9 @@ class MainViewController: UIViewController  {
         view.backgroundColor = .white
         setupMidButton()
         
+        setupDisplayer()
         view.addSubview(displayerLabel)
-        popoverView = PopoverMenuView(height: 120)
+        popoverView = PopoverMenuView(height: 120, data: defaultData)
         popoverView.delegate = self
     }
 
@@ -37,7 +38,7 @@ class MainViewController: UIViewController  {
     
     func setupDisplayer() {
         displayerLabel = UILabel(frame: CGRect(x: 0, y: 300, width: screenWidth, height: 30))
-        displayerLabel.text = ""
+        displayerLabel.text = reduceArray(defaultData)
         displayerLabel.numberOfLines = 1
         displayerLabel.textAlignment = .center
     }
@@ -47,30 +48,14 @@ class MainViewController: UIViewController  {
         navigationController?.navigationBar.isTranslucent = false
         midButton.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         midButton.addTarget(self, action: #selector(self.midButtonTapped), for: .touchUpInside)
-        midButton.setAttributedTitle(NSAttributedString(string: "Title", attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.black]), for: UIControlState.normal)
+        midButton.setAttributedTitle(NSAttributedString(string: "Test", attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.black]), for: UIControlState.normal)
         navigationItem.titleView = midButton
     }
     @objc func midButtonTapped() {
         popoverView.quickSwitch()
-//        if popoverView.isOnScreen {
-//            popoverView.dismiss(completion: {
-//                print("Dismiss")
-//            })
-//        } else {
-//            popoverView.show(completion: nil)
-//        }
-        
-        
-//        let viewController = storyboard!.instantiateViewController(withIdentifier: "Popover")
-//        viewController.modalPresentationStyle = .custom
-//        viewController.transitioningDelegate = transition
-//
-//        present(viewController, animated: true, completion: nil)
-        
     }
-    
-    func printSomeThing(completion: (()->())?) {
-        
+    internal func reduceArray(_ array: Array<String>) -> String{
+        return String(array.reduce(into:"") { $0 += $1 + ", " }.dropLast(2))
     }
 }
 

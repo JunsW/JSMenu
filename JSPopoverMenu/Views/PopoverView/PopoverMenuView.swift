@@ -11,14 +11,13 @@ import UIKit
 
 class PopoverMenuView: UIView {
     
-//    private var headerView: UIView!
-    
     internal var removalResponder: UIControl! // 加载在父级视图上
     internal var menuCollection: UICollectionView!
     internal var headerView: UIView!
     internal var isOnScreen = false
     internal var animationOffset: CGFloat { get { return self.frame.height * 2 } }
-    // Mark: Edit
+    
+    // Mark: 用于支持编辑的变量
     /// 内部编辑状态用的数据
     internal var dynamicData: [String]!
     internal var addButtonIndex: Int { get { return dynamicData.count - 1 - deletedCells.count } }
@@ -33,26 +32,27 @@ class PopoverMenuView: UIView {
     internal var panEndingIndex: IndexPath!
     /// 标明拖动事件是仅仅拖动还是要删除
     internal var needDelete: Bool?
-    
-    /// 外部输入数据 内部只有在编辑完成时调用以更新
+    /// 作为特殊按钮的初始所索引值，用于重置编辑状态
+    internal let maxIndex = 99
+    /// 外部输入数据 内部只有在编辑完成时调用以更新 初始化不会掉用willSet
     public var data: [String]! { willSet(new) { dynamicData = new } }
     public var delegate: JSPopoverMenuViewDelegate! // PopoverMenuDelegate
     
-    // UI Related
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
-    let baseColor = UIColor.from(hex: 0xf2f2f2)
-    let selectedTextColor = UIColor.from(hex: 0xFD8B15)
-    let defaultTextColor = UIColor.from(hex: 0x373636)
+    // UI 相关常量
+    internal let screenWidth = UIScreen.main.bounds.width
+    internal let screenHeight = UIScreen.main.bounds.height
+    internal let baseColor = UIColor.from(hex: 0xf2f2f2)
+    internal let selectedTextColor = UIColor.from(hex: 0xFD8B15)
+    internal let defaultTextColor = UIColor.from(hex: 0x373636)
 
     // State Marker
     var isCollectionViewEditing = false
     // ======
     
-    init(height: CGFloat) {
+    init(height: CGFloat, data: [String]) {
         super.init(frame: CGRect(x: 0, y: -height*2, width: screenWidth, height: height))
         backgroundColor = baseColor
-        data = ["热门", "本地", "科技", "密请", "地理", "轧戏"]
+        self.data = data
         dynamicData = data
         isUserInteractionEnabled = true
         

@@ -16,9 +16,16 @@ extension UIColor {
         return UIColor(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1)
     }
 }
-enum JSButtonState: String {
-    case done = "完成"
-    case reset = "复原"
-    case edit = "编辑"
-    case group = "类别"
+extension IndexPath {
+    static func ofRow(_ row: Int) -> IndexPath {
+        return IndexPath(row: row, section: 0)
+    }
+}
+extension CGRect {
+    func scale(x: CGFloat ,y: CGFloat) -> CGRect {
+        return CGRect(origin: origin, size: CGSize(width: width*x, height: height*y))
+    }
+    func move(x: CGFloat, y: CGFloat) -> CGRect {
+        return CGRect(x: origin.x + x, y: origin.y + y, width: width, height: height)
+    }
 }
