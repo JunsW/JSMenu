@@ -49,10 +49,11 @@ __2.1 手动显示__
 __2.2 手动取消__
 
         popoverView.dismiss() { print("See ya") } 
-###TODO
+### TODO
 1. 添加功能还没有完善，等有空再加上。
 2. 除了UIKit组件自带的自定义设置，其它还不够完善。
 3. 没有进行性能测试。
-###使用JSPopoverView软件
+
+### 使用JSPopoverView软件
 
 ![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Asset/CloudHole.png)
