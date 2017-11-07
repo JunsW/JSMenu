@@ -23,7 +23,7 @@ extension PopoverMenuView {
         }
         
     }
-    @objc public func dismiss(completion closure: (()->Void)?) { // @escaping?
+    public func dismiss(completion closure: (()->Void)?) { // @escaping?
         if isOnScreen {
             isOnScreen = false
             UIView.animate(withDuration: 0.3, animations: {
