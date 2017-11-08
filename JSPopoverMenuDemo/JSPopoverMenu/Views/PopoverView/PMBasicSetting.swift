@@ -15,8 +15,8 @@ extension PopoverMenuView {
         removalResponder.addTarget(self, action: #selector(offDuty), for: .allEvents)
     }
     internal func setupTextField() {
-        textField = JSModalTextField(frame: CGRect(x: 0, y: 100, width: 230, height: 120))
-        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-50)
+        textField = JSModalTextField(frame: CGRect(x: 0, y: 60, width: 230, height: 120))
+        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-90)
         textField.confirmed = { value in
             if let tag = value {
                 self.dynamicData.insert(tag, at: self.deleteButtonIndex)

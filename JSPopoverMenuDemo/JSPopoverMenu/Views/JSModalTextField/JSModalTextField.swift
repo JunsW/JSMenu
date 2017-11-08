@@ -77,19 +77,19 @@ extension JSModalTextField {
         backMask.alpha = 0
     }
     fileprivate func setupInfoLabel() {
-        infoLabel = UILabel(frame: CGRect(x: 10, y: 15, width: self.bounds.width-20, height: 20))
-        infoLabel.attributedText = NSAttributedString(string: "新的标签", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor : UIColor.black])
+        infoLabel = UILabel(frame: CGRect(x: 15, y: 20, width: 50, height: 20))
+        infoLabel.attributedText = NSAttributedString(string: "新标签", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15), NSAttributedStringKey.foregroundColor : UIColor.from(hex: 0x757575)])
         infoLabel.numberOfLines = 1
-        infoLabel.textAlignment = .center
+        infoLabel.textAlignment = .left
     }
     fileprivate func setupTextField() {
-        textField = UITextField(frame: CGRect(x: 0, y: 40, width: self.bounds.width*0.8, height: 30))
-        textField.center.x = bounds.width/2
+        textField = UITextField(frame: CGRect(x: 70, y: 16.5, width: self.bounds.width-30-55, height: 30))
+//        textField.center.x = bounds.width/2
         
         textField.delegate = self
         textField.backgroundColor = UIColor.from(hex: 0xE2E3E7)
         textField.layer.borderColor = UIColor.from(hex: 0xE2E3E7).cgColor
-        textField.layer.cornerRadius = 2
+        textField.layer.cornerRadius = 3
         textField.placeholder = "Label"
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
@@ -101,8 +101,9 @@ extension JSModalTextField {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 30))
     }
     fileprivate func setupButton() {
-        confirmButton = UIButton(frame: CGRect(x: 0, y: 80, width: self.bounds.width*0.9, height: 30))
-        confirmButton.center.x = bounds.width / 2
+        confirmButton = UIButton(frame: CGRect(x: 15, y: 61.5, width: self.bounds.width-30, height: 30))
+//        confirmButton.center.x = bounds.width / 2
+        confirmButton.layer.cornerRadius = 3
         confirmButton.addTarget(self, action: #selector(confirmButtonTouchDown), for: .touchDown)
         confirmButton.addTarget(self, action: #selector(confirmButtonTouchUp), for: .touchUpInside)
         confirmButton.setAttributedTitle(NSAttributedString(string: "添 加", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.white]), for: .normal)

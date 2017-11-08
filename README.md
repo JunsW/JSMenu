@@ -8,7 +8,10 @@
 
 ## 示例
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo.gif)
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo.gif)  
+__添加新标签__
+
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/AddNewTag.gif)
 
 ## 使用
 1.参考Demo中的`MainViewController`的调用。推荐点击`NavigationBar`的`titleView`响应    
@@ -50,10 +53,9 @@ __2.2 手动取消__
 
         popoverView.dismiss() { print("See ya") } 
 ### TODO
-1. 添加功能还没有完善，等有空再加上
-2. 除了UIKit组件自带的自定义设置，其它还不够完善
-3. 进行性能测试
-4. 使用AutoLayout
+1. 除了UIKit组件自带的自定义设置，其它还不够完善
+2. 使用AutoLayout
+3. 添加新标签的`UITdextField`的字符限制功能还有待完善
 ### 使用JSPopoverView软件
 
 ![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/CloudHole2.png)
