@@ -39,6 +39,12 @@ __3.1 获取点击事件__
 __3.2 获取编辑完成后的更新数据__
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String])
+    
+__3.3 获取添加的新标签值__
+
+	func popoverMenu(_ popoverMenu: PopoverMenuView, newTag value: String)
+建议通过编辑完成后的数据获取，此处是编辑过程中添加完，并不是最终编辑完成数据
+
 ### 3. 显示
 有两种显示方法——自动切换和手动的显示取消。
 __1. 快速切换。显示的时候调用将取消，没有显示的时候调用将显示__
