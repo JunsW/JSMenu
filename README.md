@@ -12,7 +12,19 @@
 __添加新标签__
 
 ![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/AddNewTag.gif)
+## 安装
+### [CocoaPods](http://cocoapods.org)
 
+	source 'https://github.com/CocoaPods/Specs.git'
+	platform :ios, '10.0'
+	use_frameworks!
+
+	target '<Your Target Name>' do
+   		pod 'JSPopoverMenu', '~> 1.0.1' //
+	end
+	
+### 手动
+将_Source_文件夹下的两个`.swift`文件加入即可
 ## 使用
 1.参考Demo中的`MainViewController`的调用。推荐点击`NavigationBar`的`titleView`响应    
 2.需要实现`JSPopoverMenuViewDelegate`协议。获取编辑之后更新的数据以及`Cell`点击事件。
