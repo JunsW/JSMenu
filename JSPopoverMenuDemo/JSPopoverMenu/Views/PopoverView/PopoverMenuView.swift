@@ -14,6 +14,7 @@ class PopoverMenuView: UIView {
     internal var removalResponder: UIControl! // 加载在父级视图上
     internal var menuCollection: UICollectionView!
     internal var headerView: UIView!
+    internal var textField: JSModalTextField!
     internal var isOnScreen = false
     internal var animationOffset: CGFloat { get { return self.frame.height * 2 } }
     
@@ -46,8 +47,27 @@ class PopoverMenuView: UIView {
     internal let defaultTextColor = UIColor.from(hex: 0x373636)
 
     // State Marker
-    var isCollectionViewEditing = false
+    internal var isCollectionViewEditing = false
     // ======
+    
+    // Mark: Text Field
+    /// 设置获取弹出式textField取消时调用的闭包
+    public var textFieldDismissed: (()->Void)? {
+        get { return textField.dismissCompleted }
+        set { textField.dismissCompleted = newValue! }
+    }
+    /// 设置限制规则，如果只是长度限制，直接调用textFieldMaxInputLength即可
+    public var textFieldShouldChangeCharacters: ((UITextField)->Bool)? {
+        get { return textField.shouldChangeCharacters }
+        set { textField.shouldChangeCharacters = newValue! }
+    }
+    /// 限制输入长度，如果没有设置textFieldShouldChangeCharacters 闭包，此属性生效。
+    public var textFieldMaxInputLength: Int {
+        get { return textField.maxInputLength }
+        set { textField.maxInputLength = newValue }
+    }
+    
+    
     
     init(height: CGFloat, data: [String]) {
         super.init(frame: CGRect(x: 0, y: -height*2, width: screenWidth, height: height))
@@ -59,10 +79,10 @@ class PopoverMenuView: UIView {
         setupCollectionView()
         setupHeaderView()
         setupResponder()
-        
+        setupTextField()
+
         addSubview(menuCollection)
         addSubview(headerView)
-
     }
     
     required init?(coder aDecoder: NSCoder) {

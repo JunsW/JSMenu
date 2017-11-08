@@ -14,7 +14,18 @@ extension PopoverMenuView {
         removalResponder = UIControl(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.bounds.size))
         removalResponder.addTarget(self, action: #selector(offDuty), for: .allEvents)
     }
-    
+    internal func setupTextField() {
+        textField = JSModalTextField(frame: CGRect(x: 0, y: 100, width: 230, height: 120))
+        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-50)
+        textField.confirmed = { value in
+            if let tag = value {
+                self.dynamicData.insert(tag, at: self.deleteButtonIndex)
+                print(self.dynamicData)
+                self.menuCollection.insertItems(at: [IndexPath.ofRow(self.deleteButtonIndex-1)])
+                self.delegate.popoverMenu(self, newTag: tag)
+            }
+        }
+    }
     internal func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -28,8 +39,8 @@ extension PopoverMenuView {
         menuCollection.dataSource = self
         menuCollection.tag = 10011
     }
-    /// 设置 顶部视图 可以重写
-    open func setupHeaderView() {
+    /// 设置 顶部视图
+    internal func setupHeaderView() {
         headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 30))
         headerView.tag = 10015
         headerView.backgroundColor = baseColor

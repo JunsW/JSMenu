@@ -21,6 +21,7 @@
 		E86DC3CF1FACA67B003DF80A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86DC3CD1FACA67B003DF80A /* LaunchScreen.storyboard */; };
 		E86DC3DA1FACA67C003DF80A /* JSPopoverMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3D91FACA67C003DF80A /* JSPopoverMenuTests.swift */; };
 		E86DC3E51FACA67C003DF80A /* JSPopoverMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3E41FACA67C003DF80A /* JSPopoverMenuUITests.swift */; };
+		E8A057A71FB3298B00F2BCC0 /* JSModalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */; };
 		E8ADFEAF1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADFEAE1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift */; };
 		E8ADFEB11FAE032F00821FB1 /* JSMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADFEB01FAE032F00821FB1 /* JSMenuCell.swift */; };
 		E8DC08CB1FAEB85800241F2F /* PMPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC08CA1FAEB85800241F2F /* PMPresentation.swift */; };
@@ -65,6 +66,7 @@
 		E86DC3E01FACA67C003DF80A /* JSPopoverMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSPopoverMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86DC3E41FACA67C003DF80A /* JSPopoverMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPopoverMenuUITests.swift; sourceTree = "<group>"; };
 		E86DC3E61FACA67C003DF80A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSModalTextField.swift; sourceTree = "<group>"; };
 		E8ADFEAE1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMCollectionViewProtocals.swift; sourceTree = "<group>"; };
 		E8ADFEB01FAE032F00821FB1 /* JSMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSMenuCell.swift; sourceTree = "<group>"; };
 		E8DC08CA1FAEB85800241F2F /* PMPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMPresentation.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		E8287B191FAFF5BF00FF364C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8A057A51FB3296B00F2BCC0 /* JSModalTextField */,
 				E86C8E551FADCCF900BBCA3D /* PopoverView */,
 			);
 			path = Views;
@@ -203,6 +206,14 @@
 				E86DC3E61FACA67C003DF80A /* Info.plist */,
 			);
 			path = JSPopoverMenuUITests;
+			sourceTree = "<group>";
+		};
+		E8A057A51FB3296B00F2BCC0 /* JSModalTextField */ = {
+			isa = PBXGroup;
+			children = (
+				E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */,
+			);
+			path = JSModalTextField;
 			sourceTree = "<group>";
 		};
 		E8DC08C81FAEAF4E00241F2F /* Protocal */ = {
@@ -359,6 +370,7 @@
 				E8ADFEB11FAE032F00821FB1 /* JSMenuCell.swift in Sources */,
 				E8DC08CB1FAEB85800241F2F /* PMPresentation.swift in Sources */,
 				E86DC3C71FACA67B003DF80A /* MainViewController.swift in Sources */,
+				E8A057A71FB3298B00F2BCC0 /* JSModalTextField.swift in Sources */,
 				E81163471FAE0B28006FD738 /* GlobalExtensions.swift in Sources */,
 				E8287B1D1FAFF70C00FF364C /* JSButtonState.swift in Sources */,
 				E86C8E541FADCCE600BBCA3D /* PMBasicSetting.swift in Sources */,

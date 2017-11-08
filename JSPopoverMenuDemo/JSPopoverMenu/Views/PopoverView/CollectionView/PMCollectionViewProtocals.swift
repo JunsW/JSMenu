@@ -22,18 +22,17 @@ extension PopoverMenuView: UICollectionViewDelegate {
         let limitation = dynamicData.count - 1 - deletedCells.count
         return indexPath.row < limitation ? false : true
     }
-    /// 只有待删除的cell才会调用这个事件
+    /// 只有待删除的cell和Add才会调用这个事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("I've been chosen! Help : \(indexPath)")
         let cell = collectionView.cellForItem(at: indexPath) as! JSMenuCell
-        print("cell title: \(cell.label!.text!)")
         if (cell.label != nil) {
             cell.discharged()
             recoverCell(from: indexPath)
-//            dynamicData.remove(at: indexPath.row)
             deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
         } else {
             // Add
+            textField.show(onView: delegate.baseView) {
+            }
         }
        
 //        delegate.popoverMenu(self, didSelectedAt: indexPath)
@@ -53,16 +52,8 @@ extension PopoverMenuView: UICollectionViewDataSource {
         
         if dynamicData[indexPath.row] == "add" {
             cell.setupImage(name: "cross")
-//            button.setImage(UIImage(named: "cross"), for: .normal)
-//            button.layer.borderColor = UIColor.from(hex: selectedTextColor).cgColor
-//            button.layer.borderWidth = 1.5
-//            button.label.isHidden = true
         } else if dynamicData[indexPath.row] == "delete" {
             cell.setupImage(name: "dustbin")
-//            button.setImage(UIImage(named: "dustbin2"), for: .normal)
-//            button.imageView?.contentMode = .scaleAspectFit
-//            button.isEnabled = false
-//            button.label.isHidden = true
         } else {
             cell.setup(title: dynamicData[indexPath.row])
         }

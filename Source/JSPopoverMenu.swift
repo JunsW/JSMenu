@@ -13,6 +13,7 @@ class JSPopoverMenuView: UIView {
     fileprivate var removalResponder: UIControl! // 加载在父级视图上
     fileprivate var menuCollection: UICollectionView!
     fileprivate var headerView: UIView!
+    fileprivate var textField: JSModalTextField!
     fileprivate var isOnScreen = false
     fileprivate var animationOffset: CGFloat { get { return self.frame.height * 2 } }
     
@@ -48,6 +49,25 @@ class JSPopoverMenuView: UIView {
     var isCollectionViewEditing = false
     // ======
     
+    // Mark: Text Field
+    /// 设置获取弹出式textField取消时调用的闭包
+    public var textFieldDismissed: (()->Void)? {
+        get { return textField.dismissCompleted }
+        set { textField.dismissCompleted = newValue! }
+    }
+    /// 设置限制规则，如果只是长度限制，直接调用textFieldMaxInputLength即可
+    public var textFieldShouldChangeCharacters: ((UITextField)->Bool)? {
+        get { return textField.shouldChangeCharacters }
+        set { textField.shouldChangeCharacters = newValue! }
+    }
+    /// 限制输入长度，如果没有设置textFieldShouldChangeCharacters 闭包，此属性生效。
+    public var textFieldMaxInputLength: Int {
+        get { return textField.maxInputLength }
+        set { textField.maxInputLength = newValue }
+    }
+    
+    
+    
     init(height: CGFloat, data: [String]) {
         super.init(frame: CGRect(x: 0, y: -height*2, width: screenWidth, height: height))
         backgroundColor = baseColor
@@ -79,7 +99,18 @@ extension JSPopoverMenuView {
         removalResponder = UIControl(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.bounds.size))
         removalResponder.addTarget(self, action: #selector(offDuty), for: .allEvents)
     }
-    
+    internal func setupTextField() {
+        textField = JSModalTextField(frame: CGRect(x: 0, y: 100, width: 230, height: 120))
+        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-50)
+        textField.confirmed = { value in
+            if let tag = value {
+                self.dynamicData.insert(tag, at: self.deleteButtonIndex)
+                print(self.dynamicData)
+                self.menuCollection.insertItems(at: [IndexPath.ofRow(self.deleteButtonIndex-1)])
+                self.delegate.popoverMenu(self, newTag: tag)
+            }
+        }
+    }
     fileprivate func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -238,7 +269,7 @@ protocol JSPopoverMenuViewDelegate: NSObjectProtocol {
     var baseView: UIView {get}
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, didSelectedAt indexPath: IndexPath)
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, updatedData data: [String])
-    //    func popoverMenu(_ popoverMenu: JSPopoverMenuView, addedNew value: String)
+    func popoverMenu(_ popoverMenu: PopoverMenuView, newTag value: String)
 }
 
 // Mark: - Gesture handler
@@ -392,6 +423,7 @@ extension JSPopoverMenuView: UICollectionViewDelegate {
             deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
         } else {
             // Add
+            textField.show(onView: delegate.baseView, completion: nil)
         }
         
         //        delegate.popoverMenu(self, didSelectedAt: indexPath)

@@ -18,4 +18,7 @@ extension MainViewController: JSPopoverMenuViewDelegate {
     func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String]) {
         displayerLabel.text = reduceArray(data)
     }
+    func popoverMenu(_ popoverMenu: PopoverMenuView, newTag value: String) {
+        print(value)
+    }
 }
