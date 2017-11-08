@@ -266,7 +266,7 @@ extension JSPopoverMenuView {
 
 // Mark: - Protocal
 protocol JSPopoverMenuViewDelegate: NSObjectProtocol {
-    var baseView: UIView {get}
+    var baseView: UIView { get }
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, didSelectedAt indexPath: IndexPath)
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, updatedData data: [String])
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, newTag value: String)
