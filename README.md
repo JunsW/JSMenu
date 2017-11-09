@@ -5,7 +5,7 @@
 JSPopoverMenu is a popover tag manager view. Elegant edting mode, easy to use.  
 Tap the __Edit__ button at the top right to start edit mode and then this button will change to __Done__.   
 To move the cells, you just drag it. Moving a cell to Trashbin icon will put the cell to the end of the queue and turn the cell to gray. 
-![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Example1.png)  
+![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Example1.png)  
 
 Touch the done button at the top right to confirm deleting or those tail cells to put it back to where it was automatically. By touching the __reset__ button, you could undo all actions.
 
@@ -14,10 +14,10 @@ Touch the done button at the top right to confirm deleting or those tail cells t
 
 ## Demo
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo_en.gif)  
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Demo_en.gif)  
 __Add New Tag__
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Add_en.gif)
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Add_en.gif)
 ## Installation
 ### [CocoaPods](http://cocoapods.org)
 
@@ -85,4 +85,4 @@ __2.2 Dimiss__
 
 ### 使用JSPopoverView软件
 
-![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/CloudHole2.png)
+![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/CloudHole2.png)

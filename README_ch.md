@@ -3,17 +3,17 @@
 ![Language](https://img.shields.io/badge/swift-4.0-orange.svg)
 
 类似新浪微博首页话题管理的弹出式。 编辑更流畅。 几行代码简单易用。    
-点击`编辑`按钮，进入编辑模式，拖动排序，拖动到垃圾桶标志上自动将`Cell`放到队尾待删除区域，`Cell`会变成灰色。![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Example1.png)    
+点击`编辑`按钮，进入编辑模式，拖动排序，拖动到垃圾桶标志上自动将`Cell`放到队尾待删除区域，`Cell`会变成灰色。![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Example1.png)    
 点击待删除区域的某个`Cell`会将其放回原来的位置。
 点击完成确认删除，或者点击复原撤销全部编辑。
 
 
 ## 示例
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo_ch.gif)  
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Demo_ch.gif)  
 __添加新标签__
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Add_ch.gif)
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/Add_ch.gif)
 ## 安装
 ### [CocoaPods](http://cocoapods.org)
 
@@ -78,4 +78,4 @@ __2.2 手动取消__
 3. 添加新标签的`UITdextField`的字符限制功能还有待完善
 ### 使用JSPopoverView软件
 
-![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/CloudHole2.png)
+![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/Assets/CloudHole2.png)
