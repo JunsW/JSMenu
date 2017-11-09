@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  JSPopoverMenu
+
+  Created by 王俊硕 on 2017/11/9.
+  Copyright © 2017年 王俊硕. All rights reserved.
+*/
+"Movies" = "Movies";
+"Sports" = "Sports";
+"Books" = "Books";
+"Travel" = "Travel";
+"News" = "News";
+"Food" = "Food";
+"Edit" = "Edit";
+"Done" = "Done";
+"Tags" = "Tags";
+"Reset" = "Reset";
+"Test" = "Test";
+"NewLabel" = "New";
+"Add" = "Add";
+"Placeholder" = "Tag";

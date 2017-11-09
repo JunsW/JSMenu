@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PopoverMenuView {
+extension JSPopoverMenuView {
     
     public func show(completion closure: (()->Void)?) {
         if !isOnScreen {

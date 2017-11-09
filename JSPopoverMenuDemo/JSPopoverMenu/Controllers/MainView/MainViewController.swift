@@ -13,9 +13,9 @@ class MainViewController: UIViewController  {
     lazy var midButton = UIButton(type:  .system)
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-    let defaultData = ["一二", "三四", "五六", "七八", "九十", "溢出"]
+    let defaultData = ["Sports", "Movies", "Food", "News", "Travel", "Books"].map { NSLocalizedString($0, comment: "Localizable") }
     
-    var popoverView: PopoverMenuView!
+    var popoverView: JSPopoverMenuView!
     var displayerLabel: UILabel!
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class MainViewController: UIViewController  {
         
         setupDisplayer()
         view.addSubview(displayerLabel)
-        popoverView = PopoverMenuView(height: 120, data: defaultData)
+        popoverView = JSPopoverMenuView(height: 120, data: defaultData)
         popoverView.delegate = self
     }
 
@@ -37,7 +37,7 @@ class MainViewController: UIViewController  {
     }
     
     func setupDisplayer() {
-        displayerLabel = UILabel(frame: CGRect(x: 0, y: 300, width: screenWidth, height: 30))
+        displayerLabel = UILabel(frame: CGRect(x: 0, y: 200, width: screenWidth, height: 30))
         displayerLabel.text = reduceArray(defaultData)
         displayerLabel.numberOfLines = 1
         displayerLabel.textAlignment = .center
@@ -48,7 +48,7 @@ class MainViewController: UIViewController  {
         navigationController?.navigationBar.isTranslucent = false
         midButton.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
         midButton.addTarget(self, action: #selector(self.midButtonTapped), for: .touchUpInside)
-        midButton.setAttributedTitle(NSAttributedString(string: "Test", attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.black]), for: UIControlState.normal)
+        midButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Test", comment: "Localizable"), attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.black]), for: UIControlState.normal)
         navigationItem.titleView = midButton
     }
     @objc func midButtonTapped() {

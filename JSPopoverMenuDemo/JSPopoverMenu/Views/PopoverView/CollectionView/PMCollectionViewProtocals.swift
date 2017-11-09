@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PopoverMenuView: UICollectionViewDelegate {
+extension JSPopoverMenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 63, height: 30)
     }
@@ -25,22 +25,27 @@ extension PopoverMenuView: UICollectionViewDelegate {
     /// 只有待删除的cell和Add才会调用这个事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! JSMenuCell
-        if (cell.label != nil) {
-            cell.discharged()
-            recoverCell(from: indexPath)
-            deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
-        } else {
-            // Add
-            textField.show(onView: delegate.baseView) {
+        if isCollectionViewEditing {
+            if (cell.label != nil) {
+                cell.discharged()
+                recoverCell(from: indexPath)
+                deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
+            } else {
+                // Add
+                textField.show(onView: delegate.baseView) {
+                }
             }
+        } else {
+            delegate.popoverMenu(self, didSelectedAt: indexPath)
+            dismiss(completion: nil)
         }
+        
        
-//        delegate.popoverMenu(self, didSelectedAt: indexPath)
     }
     
 }
 
-extension PopoverMenuView: UICollectionViewDataSource {
+extension JSPopoverMenuView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dynamicData.count
     }
@@ -61,6 +66,6 @@ extension PopoverMenuView: UICollectionViewDataSource {
     }
     
 }
-extension PopoverMenuView: UICollectionViewDelegateFlowLayout {
+extension JSPopoverMenuView: UICollectionViewDelegateFlowLayout {
     
 }

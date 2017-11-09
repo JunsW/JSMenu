@@ -19,25 +19,31 @@ class JSPopoverMenuView: UIView {
     
     // Mark: 用于支持编辑的变量
     /// 内部编辑状态用的数据
+    /// An fileprivate data source. Used in editing mode.
     fileprivate var dynamicData: [String]!
+    /// Return the index of the add button.
     fileprivate var addButtonIndex: Int { get { return dynamicData.count - 1 - deletedCells.count } }
+    /// Return the index of the delete button.
     fileprivate var deleteButtonIndex: Int { get { return dynamicData.count - 2 - deletedCells.count } }
-    /// 记录被删除的cell，在完成按钮点击的确认删除，dismiss时清空
+    /// 记录被删除的cell，在完成按钮点击的确认删除，dismiss时清空. Recording the cells about to be deleted
     fileprivate var deletedCells: [Int] = []
-    /// 记录正在移动的Cell
+    /// 记录正在移动的Cell The index of the cell currently dragging.
     fileprivate var selectedIndex: IndexPath?
-    /// 被拖动cell的SnapView，用来实现拖动动画
+    /// 被拖动cell的SnapView，用来实现拖动动画 The snapView of the selected cell.
     fileprivate var animationCell: UIView?
-    /// 在交换的时候赋值，记录上一次被交换的cell，用于手势结束居中animationView
+    /// 在交换的时候赋值，记录上一次被交换的cell，用于手势结束居中animationView The indexPath of cell swaped last
     fileprivate var panEndingIndex: IndexPath!
-    /// 标明拖动事件是仅仅拖动还是要删除
+    /// 标明拖动事件是仅仅拖动还是要删除 Indicate whether the dragging is meant to delete the cell.
     fileprivate var needDelete: Bool?
+    /// Dragging Gesture Recognizer
+    fileprivate var panGesture: UIPanGestureRecognizer!
+    
     /// 作为特殊按钮的初始所索引值，用于重置编辑状态
     fileprivate let maxIndex = 99
-    /// 外部输入数据 内部只有在编辑完成时调用以更新 初始化不会掉用willSet
+    /// 外部输入数据 内部只有在编辑完成时调用以更新 初始化不会掉用willSet The input data source. Only be updated when editing done.
     public var data: [String]! { willSet(new) { dynamicData = new } }
     public var delegate: JSPopoverMenuViewDelegate! // PopoverMenuDelegate
-    
+
     // UI 相关常量
     fileprivate let screenWidth = UIScreen.main.bounds.width
     fileprivate let screenHeight = UIScreen.main.bounds.height
@@ -99,9 +105,9 @@ extension JSPopoverMenuView {
         removalResponder = UIControl(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.bounds.size))
         removalResponder.addTarget(self, action: #selector(offDuty), for: .allEvents)
     }
-    internal func setupTextField() {
-        textField = JSModalTextField(frame: CGRect(x: 0, y: 100, width: 230, height: 120))
-        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-50)
+    fileprivate func setupTextField() {
+        textField = JSModalTextField(frame: CGRect(x: 0, y: 60, width: 230, height: 120))
+        textField.center = CGPoint(x: screenWidth/2, y: screenHeight/2-90)
         textField.confirmed = { value in
             if let tag = value {
                 self.dynamicData.insert(tag, at: self.deleteButtonIndex)
@@ -124,8 +130,8 @@ extension JSPopoverMenuView {
         menuCollection.dataSource = self
         menuCollection.tag = 10011
     }
-    /// 设置 顶部视图 可以重写
-    open func setupHeaderView() {
+    /// 设置 顶部视图
+    fileprivate func setupHeaderView() {
         headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 30))
         headerView.tag = 10015
         headerView.backgroundColor = baseColor
@@ -135,7 +141,7 @@ extension JSPopoverMenuView {
         leftButton.addTarget(self, action: #selector(self.leftHeaderButtonTapped), for: .touchUpInside)
         leftButton.tag = 10012
         // 编辑 按钮
-        let rightButton = JSHeaderButton(originX: screenWidth-40, state: JSButtonState.edit)
+        let rightButton = JSHeaderButton(originX: screenWidth-50, state: JSButtonState.edit)
         rightButton.addTarget(self, action: #selector(self.rightHeaderButtonTapped), for: .touchUpInside)
         rightButton.tag = 10013
         
@@ -145,53 +151,52 @@ extension JSPopoverMenuView {
     }
     
     @objc func leftHeaderButtonTapped(sender leftButton: JSHeaderButton) {
-        print("Ohh **! man xue fu huo!")
         if leftButton.currentState == JSButtonState.reset {
             resetMenu(forEdting: true)
         }
     }
     @objc func rightHeaderButtonTapped(sender rightButton: JSHeaderButton) {
-        print("Mayday! Mayday! Right wing under attack!")
-        
         let leftButton = headerView.viewWithTag(10012) as! JSHeaderButton
-        if rightButton.currentState == JSButtonState.done {// 退出编辑
+        if rightButton.currentState == JSButtonState.done {// 退出编辑 Edit Done
             rightButton.switchTo(state: .edit)
             leftButton.switchTo(state: .group)
             finishEditing() // 完成编辑 保存
-        } else { // 进入编辑
+        } else { // 进入编辑 Edit Start
             rightButton.switchTo(state: .done)
             leftButton.switchTo(state: .reset)
             startEditing() // 开始编辑
         }
     }
     
-    /// 开始编辑调用 添加拖动手势
+    /// 开始编辑调用 添加拖动手势 Called when editing started. Add drag gesture.
     private func startEditing() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.gestureHandler(gesture:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.gestureHandler(gesture:)))
         menuCollection.addGestureRecognizer(panGesture)
         dynamicData.append(contentsOf: ["delete", "add"])
         menuCollection.insertItems(at: [IndexPath(row: dynamicData.count-2, section: 0), IndexPath(row: dynamicData.count-1, section:0)])
         isCollectionViewEditing = true
     }
-    /// 完成编辑 保存编辑结果
+    /// 完成编辑 保存编辑结果 Save editing result
     private func finishEditing() {
         
-        // 更新数据源 删除删除按钮和添加按钮
+        // 删除拖动手势 Remove dragging gesture
+        menuCollection.removeGestureRecognizer(panGesture)
+        // 更新数据源 删除删除按钮和添加按钮 Update dynamic data sdource
         for _ in 1...deletedCells.count+2 {
             dynamicData.removeLast()
             menuCollection.deleteItems(at: [IndexPath(row: dynamicData.count, section: 0)]) // 因为已经removeLast()所以不用-1
         }
-        // 更新静态数据源
+        // 更新静态数据源 Update static data source
         data = dynamicData
-        // 通知控制器
+        // 通知控制器 inform the delegate
         //        editCompleted()
         delegate.popoverMenu(self, updatedData: data)
-        // 重置寄存器
+        // 重置寄存器 reset variables
         deletedCells = []
         isCollectionViewEditing = false
         menuCollection.allowsSelection = true
     }
-    /// 取消编辑 丢弃内容 结束编辑
+    /// 取消编辑 丢弃内容 结束编辑 Cancel editing. Abandon editing content. End editing
     private func cancelEdting() {
         if dynamicData.count != data.count+2 {
             //alert
@@ -202,7 +207,7 @@ extension JSPopoverMenuView {
     
     //FIXME: 没有恢复交换过但没有删除的Cell 只对特殊按钮后面的待删除项进行还原
     
-    /// 重置编辑数据 恢复至编辑开始的状态
+    /// 重置编辑数据 恢复至编辑开始的状态 Reset data to the beginning.
     private func resetMenu(forEdting: Bool) {
         
         if forEdting {
@@ -215,7 +220,7 @@ extension JSPopoverMenuView {
         deletedCells = []
         
     }
-    /// 复原cell动画
+    /// 复原cell动画 Animatable reset
     private func resetCells() {
         var indexes = getOrignialIndexes(of: dynamicData)
         deletedCells = []
@@ -239,21 +244,21 @@ extension JSPopoverMenuView {
         for (key, element) in array.enumerated() { if item < element { return key } }
         return array.count-1-2 // 最大一个 除掉两个特殊按钮
     }
-    /// 找到最初的序号以排序恢复
+    /// 找到最初的序号以排序恢复 Find the original position of `dynamicData` item in `data`.
     private func getOrignialIndexes(of array: [String]) -> [Int] {
-        return array.map(){ self.data.index(of: $0) ?? 99 } // 使特殊按钮的值尽可能大，这样不会移动到它们后面去
+        return array.map(){ self.data.index(of: $0) ?? 99 } // 使特殊按钮的值尽可能大，这样不会移动到它们后面去 Set the special button a large Int to prevent them from being move to the end when sort by the index
     }
-    /// 恢复cell样式
+    /// 恢复cell样式 Reset the cell's style
     private func dischargeCell(at indexPath: IndexPath) {
         let cell = menuCollection.cellForItem(at: indexPath) as! JSMenuCell
         cell.discharged()
     }
-    /// 恢复单个被删除的Cell 响应点击事件
+    /// 恢复单个被删除的Cell 响应点击事件 Recover a cell. Called when user tap single cell in about to delete area
     fileprivate func recoverCell(from index: IndexPath) {
         
         let cell = menuCollection.cellForItem(at: index) as! JSMenuCell
         let toIndex = IndexPath(row: data.index(of: cell.label!.text!)!, section: 0)
-        // 更新数据源
+        // 更新数据源 update data source
         let element = dynamicData[index.row]
         dynamicData.remove(at: index.row)
         dynamicData.insert(element, at: toIndex.row)
@@ -413,20 +418,21 @@ extension JSPopoverMenuView: UICollectionViewDelegate {
     }
     /// 只有待删除的cell才会调用这个事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("I've been chosen! Help : \(indexPath)")
         let cell = collectionView.cellForItem(at: indexPath) as! JSMenuCell
-        print("cell title: \(cell.label!.text!)")
-        if (cell.label != nil) {
-            cell.discharged()
-            recoverCell(from: indexPath)
-            //            dynamicData.remove(at: indexPath.row)
-            deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
+        if isCollectionViewEditing {
+            if (cell.label != nil) {
+                cell.discharged()
+                recoverCell(from: indexPath)
+                deletedCells.remove(at: data.count+2-indexPath.row-1)// 总labrls=data.count+2; indexPath.row从0开始
+            } else {
+                // Add
+                textField.show(onView: delegate.baseView) {
+                }
+            }
         } else {
-            // Add
-            textField.show(onView: delegate.baseView, completion: nil)
+            delegate.popoverMenu(self, didSelectedAt: indexPath)
+            dismiss(completion: nil)
         }
-        
-        //        delegate.popoverMenu(self, didSelectedAt: indexPath)
     }
 }
 
@@ -442,16 +448,8 @@ extension JSPopoverMenuView: UICollectionViewDataSource {
         
         if dynamicData[indexPath.row] == "add" {
             cell.setupImage(name: "cross")
-            //            button.setImage(UIImage(named: "cross"), for: .normal)
-            //            button.layer.borderColor = UIColor.from(hex: selectedTextColor).cgColor
-            //            button.layer.borderWidth = 1.5
-            //            button.label.isHidden = true
         } else if dynamicData[indexPath.row] == "delete" {
             cell.setupImage(name: "dustbin")
-            //            button.setImage(UIImage(named: "dustbin2"), for: .normal)
-            //            button.imageView?.contentMode = .scaleAspectFit
-            //            button.isEnabled = false
-            //            button.label.isHidden = true
         } else {
             cell.setup(title: dynamicData[indexPath.row])
         }
@@ -478,9 +476,8 @@ class JSHeaderButton: UIButton {
     private let hightTextColor = UIColor.from(hex: 0xFD8B15)
     
     init(originX x: CGFloat, state: JSButtonState) {
-        super.init(frame: CGRect(x: x, y: 0, width: 30, height: 30))
+        super.init(frame: CGRect(x: x, y: 0, width: 40, height: 30))
         switchTo(state: state)
-        titleLabel!.textAlignment = .left
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -492,11 +489,6 @@ class JSHeaderButton: UIButton {
         buttonState = state
         buttonState.applyTo(self)
     }
-    private func setTitle(_ title: String, withColor color: UIColor) {
-        setAttributedTitle(NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: color, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]), for: .normal)
-    }
-    
-    
     
 }
 
@@ -551,10 +543,10 @@ class JSMenuCell: UICollectionViewCell {
 }
 // Mark: - Data Model
 enum JSButtonState: String {
-    case done = "完成"
-    case reset = "复原"
-    case edit = "编辑"
-    case group = "类别"
+    case done = "Done"
+    case reset = "Reset"
+    case edit = "Edit"
+    case group = "Tags"
     //TODO: 接受参数支持自定义颜色
     var textColor: UIColor {
         switch self {
@@ -564,10 +556,16 @@ enum JSButtonState: String {
             return UIColor.from(hex: 0xFD8B15)
         }
     }
+    /// Apply string to the button
     func applyTo(_ button: UIButton) {
-        
-        button.setAttributedTitle(NSAttributedString(string: rawValue, attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]), for: .normal)
-        
+        if self == .edit || self == .done {
+            button.contentHorizontalAlignment = .right
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 3)
+        } else {
+            button.contentHorizontalAlignment = .left
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
+        }
+        button.setAttributedTitle(NSAttributedString(string: self.rawValue, attributes: [NSAttributedStringKey.foregroundColor: textColor, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]), for: .normal)
     }
 }
 

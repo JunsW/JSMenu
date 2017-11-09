@@ -23,9 +23,8 @@ class JSHeaderButton: UIButton {
     private let hightTextColor = UIColor.from(hex: 0xFD8B15)
     
     init(originX x: CGFloat, state: JSButtonState) {
-        super.init(frame: CGRect(x: x, y: 0, width: 30, height: 30))
+        super.init(frame: CGRect(x: x, y: 0, width: 40, height: 30))
         switchTo(state: state)
-        titleLabel!.textAlignment = .left
     }
     
     required init?(coder aDecoder: NSCoder) {

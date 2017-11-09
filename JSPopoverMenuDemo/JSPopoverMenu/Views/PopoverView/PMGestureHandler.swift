@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PopoverMenuView {
+extension JSPopoverMenuView {
     @objc internal func gestureHandler(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began: panBegan(gesture: gesture)

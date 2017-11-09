@@ -55,11 +55,9 @@ class JSModalTextField: UIView {
     @objc internal func responderTapped() {
         
         if isEditing {
-            print("Shut keyboard down")
             textField.resignFirstResponder()
             isEditing = false
         } else {
-            print("Dismiss")
             dismissA(completion: nil)
         }
     }
@@ -78,7 +76,7 @@ extension JSModalTextField {
     }
     fileprivate func setupInfoLabel() {
         infoLabel = UILabel(frame: CGRect(x: 15, y: 20, width: 50, height: 20))
-        infoLabel.attributedText = NSAttributedString(string: "新标签", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15), NSAttributedStringKey.foregroundColor : UIColor.from(hex: 0x757575)])
+        infoLabel.attributedText = NSAttributedString(string: NSLocalizedString("NewLabel", comment: "Localizable"), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15), NSAttributedStringKey.foregroundColor : UIColor.from(hex: 0x757575)])
         infoLabel.numberOfLines = 1
         infoLabel.textAlignment = .left
     }
@@ -90,7 +88,7 @@ extension JSModalTextField {
         textField.backgroundColor = UIColor.from(hex: 0xE2E3E7)
         textField.layer.borderColor = UIColor.from(hex: 0xE2E3E7).cgColor
         textField.layer.cornerRadius = 3
-        textField.placeholder = "Label"
+        textField.placeholder = NSLocalizedString("Placeholder", comment: "Localizable")
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
         textField.keyboardAppearance = .default
@@ -106,7 +104,7 @@ extension JSModalTextField {
         confirmButton.layer.cornerRadius = 3
         confirmButton.addTarget(self, action: #selector(confirmButtonTouchDown), for: .touchDown)
         confirmButton.addTarget(self, action: #selector(confirmButtonTouchUp), for: .touchUpInside)
-        confirmButton.setAttributedTitle(NSAttributedString(string: "添 加", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.white]), for: .normal)
+        confirmButton.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Add", comment: "Localizable"), attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.white]), for: .normal)
         confirmButton.backgroundColor = .from(hex: 0xFD8B15)
     }
     @objc fileprivate func confirmButtonTouchDown() {

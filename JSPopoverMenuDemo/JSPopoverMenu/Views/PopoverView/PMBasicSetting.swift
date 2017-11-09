@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PopoverMenuView {
+extension JSPopoverMenuView {
     
     internal func setupResponder() {
         removalResponder = UIControl(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.bounds.size))
@@ -50,7 +50,7 @@ extension PopoverMenuView {
         leftButton.addTarget(self, action: #selector(self.leftHeaderButtonTapped), for: .touchUpInside)
         leftButton.tag = 10012
         // 编辑 按钮
-        let rightButton = JSHeaderButton(originX: screenWidth-40, state: JSButtonState.edit)
+        let rightButton = JSHeaderButton(originX: screenWidth-50, state: JSButtonState.edit)
         rightButton.addTarget(self, action: #selector(self.rightHeaderButtonTapped), for: .touchUpInside)
         rightButton.tag = 10013
 
@@ -60,53 +60,52 @@ extension PopoverMenuView {
     }
     
     @objc func leftHeaderButtonTapped(sender leftButton: JSHeaderButton) {
-        print("Ohh **! man xue fu huo!")
         if leftButton.currentState == JSButtonState.reset {
             resetMenu(forEdting: true)
         }
     }
-    @objc func rightHeaderButtonTapped(sender rightButton: JSHeaderButton) {
-        print("Mayday! Mayday! Right wing under attack!")
-        
+    @objc func rightHeaderButtonTapped(sender rightButton: JSHeaderButton) {        
         let leftButton = headerView.viewWithTag(10012) as! JSHeaderButton
-        if rightButton.currentState == JSButtonState.done {// 退出编辑
+        if rightButton.currentState == JSButtonState.done {// 退出编辑 Edit Done
             rightButton.switchTo(state: .edit)
             leftButton.switchTo(state: .group)
             finishEditing() // 完成编辑 保存
-        } else { // 进入编辑
+        } else { // 进入编辑 Edit Start
             rightButton.switchTo(state: .done)
             leftButton.switchTo(state: .reset)
             startEditing() // 开始编辑
         }
     }
     
-    /// 开始编辑调用 添加拖动手势
+    /// 开始编辑调用 添加拖动手势 Called when editing started. Add drag gesture.
     private func startEditing() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.gestureHandler(gesture:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.gestureHandler(gesture:)))
         menuCollection.addGestureRecognizer(panGesture)
         dynamicData.append(contentsOf: ["delete", "add"])
         menuCollection.insertItems(at: [IndexPath(row: dynamicData.count-2, section: 0), IndexPath(row: dynamicData.count-1, section:0)])
         isCollectionViewEditing = true
     }
-    /// 完成编辑 保存编辑结果
+    /// 完成编辑 保存编辑结果 Save editing result
     private func finishEditing() {
 
-        // 更新数据源 删除删除按钮和添加按钮
+        // 删除拖动手势 Remove dragging gesture
+        menuCollection.removeGestureRecognizer(panGesture)
+        // 更新数据源 删除删除按钮和添加按钮 Update dynamic data sdource
         for _ in 1...deletedCells.count+2 {
             dynamicData.removeLast()
             menuCollection.deleteItems(at: [IndexPath(row: dynamicData.count, section: 0)]) // 因为已经removeLast()所以不用-1
         }
-        // 更新静态数据源
+        // 更新静态数据源 Update static data source
         data = dynamicData
-        // 通知控制器
+        // 通知控制器 inform the delegate
 //        editCompleted()
         delegate.popoverMenu(self, updatedData: data)
-        // 重置寄存器
+        // 重置寄存器 reset variables
         deletedCells = []
         isCollectionViewEditing = false
         menuCollection.allowsSelection = true
     }
-    /// 取消编辑 丢弃内容 结束编辑
+    /// 取消编辑 丢弃内容 结束编辑 Cancel editing. Abandon editing content. End editing
     private func cancelEdting() {
         if dynamicData.count != data.count+2 {
             //alert
@@ -117,7 +116,7 @@ extension PopoverMenuView {
     
     //FIXME: 没有恢复交换过但没有删除的Cell 只对特殊按钮后面的待删除项进行还原
     
-    /// 重置编辑数据 恢复至编辑开始的状态
+    /// 重置编辑数据 恢复至编辑开始的状态 Reset data to the beginning.
     private func resetMenu(forEdting: Bool) {
 
         if forEdting {
@@ -130,7 +129,7 @@ extension PopoverMenuView {
         deletedCells = []
 
     }
-    /// 复原cell动画
+    /// 复原cell动画 Animatable reset
     private func resetCells() {
         var indexes = getOrignialIndexes(of: dynamicData)
         deletedCells = []
@@ -154,21 +153,21 @@ extension PopoverMenuView {
         for (key, element) in array.enumerated() { if item < element { return key } }
         return array.count-1-2 // 最大一个 除掉两个特殊按钮
     }
-    /// 找到最初的序号以排序恢复
+    /// 找到最初的序号以排序恢复 Find the original position of `dynamicData` item in `data`.
     private func getOrignialIndexes(of array: [String]) -> [Int] {
-        return array.map(){ self.data.index(of: $0) ?? 99 } // 使特殊按钮的值尽可能大，这样不会移动到它们后面去
+        return array.map(){ self.data.index(of: $0) ?? 99 } // 使特殊按钮的值尽可能大，这样不会移动到它们后面去 Set the special button a large Int to prevent them from being move to the end when sort by the index
     }
-    /// 恢复cell样式
+    /// 恢复cell样式 Reset the cell's style
     private func dischargeCell(at indexPath: IndexPath) {
         let cell = menuCollection.cellForItem(at: indexPath) as! JSMenuCell
         cell.discharged()
     }
-    /// 恢复单个被删除的Cell 响应点击事件
+    /// 恢复单个被删除的Cell 响应点击事件 Recover a cell. Called when user tap single cell in about to delete area
     internal func recoverCell(from index: IndexPath) {
         
         let cell = menuCollection.cellForItem(at: index) as! JSMenuCell
         let toIndex = IndexPath(row: data.index(of: cell.label!.text!)!, section: 0)
-        // 更新数据源
+        // 更新数据源 update data source
         let element = dynamicData[index.row]
         dynamicData.remove(at: index.row)
         dynamicData.insert(element, at: toIndex.row)

@@ -12,13 +12,13 @@ extension MainViewController: JSPopoverMenuViewDelegate {
     var baseView: UIView { return self.view }
     
 
-    func popoverMenu(_ popoverMenu: PopoverMenuView, didSelectedAt indexPath: IndexPath) {
+    func popoverMenu(_ popoverMenu: JSPopoverMenuView, didSelectedAt indexPath: IndexPath) {
         print("Don't mess up with me: \(indexPath)")
     }
-    func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String]) {
+    func popoverMenu(_ popoverMenu: JSPopoverMenuView, updatedData data: [String]) {
         displayerLabel.text = reduceArray(data)
     }
-    func popoverMenu(_ popoverMenu: PopoverMenuView, newTag value: String) {
+    func popoverMenu(_ popoverMenu: JSPopoverMenuView, newTag value: String) {
         print(value)
     }
 }

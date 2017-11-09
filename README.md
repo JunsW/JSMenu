@@ -2,17 +2,21 @@
 ![Build Pass](https://img.shields.io/travis/rust-lang/rust.svg)
 ![Language](https://img.shields.io/badge/swift-4.0-orange.svg)
 
-基于`CollectionView`的类似新浪微博首页话题管理的弹出式。 编辑更流畅。 几行代码简单易用。    
-点击`编辑`按钮，进入编辑模式，拖动排序，拖动到垃圾桶标志上自动将`Cell`放到队尾待删除区域，点击完成确认删除，点击复原撤销全部编辑。
-点击待删除区域的某个`Cell`会将其放回原来的位置。
+JSPopoverMenu is a popover tag manager view. Elegant edting mode, easy to use.  
+Tap the __Edit__ button at the top right to start edit mode and then this button will change to __Done__.   
+To move the cells, you just drag it. Moving a cell to Trashbin icon will put the cell to the end of the queue and turn the cell to gray. 
+![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/example1.png)  
 
-## 示例
+Touch the done button at the top right to confirm deleting or those tail cells to put it back to where it was automatically. By touching the __reset__ button, you could undo all actions.
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo.gif)  
-__添加新标签__
 
-![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/AddNewTag.gif)
-## 安装
+## Demo
+
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Demo_en.gif)  
+__Add New Tag__
+
+![Demo](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Add_en.gif)
+## Installation
 ### [CocoaPods](http://cocoapods.org)
 
 	source 'https://github.com/CocoaPods/Specs.git'
@@ -20,60 +24,63 @@ __添加新标签__
 	use_frameworks!
 
 	target '<Your Target Name>' do
-   		pod 'JSPopoverMenu', '~> 1.0.1' //
+   		pod 'JSPopoverMenu', '~> 1.0' //
 	end
 	
-### 手动
-将_Source_文件夹下的两个`.swift`文件加入即可
-## 使用
-1.参考Demo中的`MainViewController`的调用。推荐点击`NavigationBar`的`titleView`响应    
-2.需要实现`JSPopoverMenuViewDelegate`协议。获取编辑之后更新的数据以及`Cell`点击事件。
-### 1. 初始化 
-默认与屏幕同宽。传入的`data`是`[String]`类型，每个`String`代表着一个`Cell`。
+### Manual
+Download two `.swift` files in _Source_.
+## Usage
+1. Check the demo in _JSPopoverMenuDemo_. The demo is designed to show the menu view when the `titleView`, which is a `UIButton`, of the `NavigationBar` is tapped.     
+2. `JSPopoverMenuViewDelegate` protocal is required to implement.
+3. 
+### 1. Initialization 
+The default width is the same as the screen. So you just need to set the `height` of the menu view.
+`data` is `[String]` type，every single `String` represents a tag (a `Cell`) on the collection view.
 
     popoverView = PopoverMenuView(height: 120, data: defaultData) 
  
     
-### 2. 委托代理
-__1.设置代理__
+### 2. Delegate
+__1. Set delegate__
 
     popoverView.delegate = self
     
     
-__2.设置`baseView`。整个`PopoverView`将加载到`baseView`上__
+__2. Set `baseView`. The entire `PopoverView` will be added to the `baseView`__
 
 	 var baseView: UIView { return self.view }
 
 
-__3.1 获取点击事件__
+__3.1 Tag Tapped Event__
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, didSelectedAt indexPath: IndexPath) 
-__3.2 获取编辑完成后的更新数据__
+__3.2 Edit Done Event__
 
     func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String])
     
-__3.3 获取添加的新标签值__
+__3.3 New Tag Inserted Event__
 
 	func popoverMenu(_ popoverMenu: PopoverMenuView, newTag value: String)
-建议通过编辑完成后的数据获取，此处是编辑过程中添加完，并不是最终编辑完成数据
+__Notice:__ This function will be invoked right after users added a new tag, which means the menu is still under the editing mode and the new tag could be delete immediately. Thus, it's better to get the final data after the editing by `func popoverMenu(_ popoverMenu: PopoverMenuView, updatedData data: [String])`.
 
-### 3. 显示
-有两种显示方法——自动切换和手动的显示取消。
-__1. 快速切换。显示的时候调用将取消，没有显示的时候调用将显示__
+### 3. Show
+There are two methods to show and dimiss the menu.  
+__1. QuickSwitch.__  
+Show the menu if the menu is not displayed, or dimiss it if the menu is displayed
 
         popoverView.quickSwitch()
 
-__2.1 手动显示__
+__2.1 Show__
 
-        popoverView.show() { print("I'm coming") } 
+        popoverView.show() { print("I'm here") } 
 
-__2.2 手动取消__
+__2.2 Dimiss__
 
         popoverView.dismiss() { print("See ya") } 
 ### TODO
-1. 除了UIKit组件自带的自定义设置，其它还不够完善
-2. 使用AutoLayout
-3. 添加新标签的`UITdextField`的字符限制功能还有待完善
+1. Using AutoLayout
+2. The character validation of the `UITdextField` is too simple.  
+
 ### 使用JSPopoverView软件
 
 ![云洞](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/CloudHole2.png)
