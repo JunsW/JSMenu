@@ -3,7 +3,7 @@
 ![Language](https://img.shields.io/badge/swift-4.0-orange.svg)
 
 类似新浪微博首页话题管理的弹出式。 编辑更流畅。 几行代码简单易用。    
-点击`编辑`按钮，进入编辑模式，拖动排序，拖动到垃圾桶标志上自动将`Cell`放到队尾待删除区域，`Cell`会变成灰色。![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/example1.png)    
+点击`编辑`按钮，进入编辑模式，拖动排序，拖动到垃圾桶标志上自动将`Cell`放到队尾待删除区域，`Cell`会变成灰色。![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Example1.png)    
 点击待删除区域的某个`Cell`会将其放回原来的位置。
 点击完成确认删除，或者点击复原撤销全部编辑。
 

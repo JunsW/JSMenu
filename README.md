@@ -5,9 +5,11 @@
 JSPopoverMenu is a popover tag manager view. Elegant edting mode, easy to use.  
 Tap the __Edit__ button at the top right to start edit mode and then this button will change to __Done__.   
 To move the cells, you just drag it. Moving a cell to Trashbin icon will put the cell to the end of the queue and turn the cell to gray. 
-![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/example1.png)  
+![Example1](https://github.com/DevNewbee/JSPopoverMenu/blob/master/assets/Example1.png)  
 
 Touch the done button at the top right to confirm deleting or those tail cells to put it back to where it was automatically. By touching the __reset__ button, you could undo all actions.
+
+[中文](https://github.com/DevNewbee/JSPopoverMenu/blob/master/README_ch.png)  
 
 
 ## Demo
