@@ -1,5 +1,5 @@
 //
-//  JSPopoverMenuView.swift
+//  JSPopoverMenu.swift
 //  JSPopoverMenu
 //
 //  Created by 王俊硕 on 2017/11/4.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JSPopoverMenuView: UIView {
+class JSPopoverMenu: UIView {
     
     fileprivate var removalResponder: UIControl! // 加载在父级视图上
     fileprivate var menuCollection: UICollectionView!
@@ -42,7 +42,7 @@ class JSPopoverMenuView: UIView {
     fileprivate let maxIndex = 99
     /// 外部输入数据 内部只有在编辑完成时调用以更新 初始化不会掉用willSet The input data source. Only be updated when editing done.
     public var data: [String]! { willSet(new) { dynamicData = new } }
-    public var delegate: JSPopoverMenuViewDelegate! // PopoverMenuDelegate
+    public var delegate: JSPopoverMenuDelegate! // PopoverMenuDelegate
 
     // UI 相关常量
     fileprivate let screenWidth = UIScreen.main.bounds.width
@@ -99,7 +99,7 @@ class JSPopoverMenuView: UIView {
 }
 
 // Mark: - Basic Setting
-extension JSPopoverMenuView {
+extension JSPopoverMenu {
     
     fileprivate func setupResponder() {
         removalResponder = UIControl(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.bounds.size))
@@ -270,15 +270,15 @@ extension JSPopoverMenuView {
 }
 
 // Mark: - Protocal
-protocol JSPopoverMenuViewDelegate: NSObjectProtocol {
+protocol JSPopoverMenuDelegate: NSObjectProtocol {
     var baseView: UIView { get }
-    func popoverMenu(_ popoverMenu: JSPopoverMenuView, didSelectedAt indexPath: IndexPath)
-    func popoverMenu(_ popoverMenu: JSPopoverMenuView, updatedData data: [String])
-    func popoverMenu(_ popoverMenu: JSPopoverMenuView, newTag value: String)
+    func popoverMenu(_ popoverMenu: JSPopoverMenu, didSelectedAt indexPath: IndexPath)
+    func popoverMenu(_ popoverMenu: JSPopoverMenu, updatedData data: [String])
+    func popoverMenu(_ popoverMenu: JSPopoverMenu, newTag value: String)
 }
 
 // Mark: - Gesture handler
-extension JSPopoverMenuView {
+extension JSPopoverMenu {
     @objc fileprivate func gestureHandler(gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began: panBegan(gesture: gesture)
@@ -364,7 +364,7 @@ extension JSPopoverMenuView {
 
 
 // Mark: -Presentation
-extension JSPopoverMenuView {
+extension JSPopoverMenu {
     
     public func show(completion closure: (()->Void)?) {
         if !isOnScreen {
@@ -402,7 +402,7 @@ extension JSPopoverMenuView {
 
 
 // Mark: - UICollectionView Protocals
-extension JSPopoverMenuView: UICollectionViewDelegate {
+extension JSPopoverMenu: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 63, height: 30)
     }
@@ -436,7 +436,7 @@ extension JSPopoverMenuView: UICollectionViewDelegate {
     }
 }
 
-extension JSPopoverMenuView: UICollectionViewDataSource {
+extension JSPopoverMenu: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dynamicData.count
     }
@@ -457,7 +457,7 @@ extension JSPopoverMenuView: UICollectionViewDataSource {
     }
     
 }
-extension JSPopoverMenuView: UICollectionViewDelegateFlowLayout {
+extension JSPopoverMenu: UICollectionViewDelegateFlowLayout {
     
 }
 // Mark: - HeaderButton
