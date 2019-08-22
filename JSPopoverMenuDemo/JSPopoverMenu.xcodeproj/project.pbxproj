@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B6DF830230E54CC00DC746F /* JSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DF82F230E54CC00DC746F /* JSTag.swift */; };
 		E81163471FAE0B28006FD738 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81163461FAE0B28006FD738 /* GlobalExtensions.swift */; };
 		E81DC09E1FB3EB86007D8D22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E81DC0A01FB3EB86007D8D22 /* Localizable.strings */; };
 		E825841B1FAF00250048B66C /* PMGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E825841A1FAF00250048B66C /* PMGestureHandler.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B6DF82F230E54CC00DC746F /* JSTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSTag.swift; sourceTree = "<group>"; };
 		E81163461FAE0B28006FD738 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
 		E81DC09F1FB3EB86007D8D22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E81DC0A11FB3EBB3007D8D22 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E8287B1C1FAFF70C00FF364C /* JSButtonState.swift */,
+				4B6DF82F230E54CC00DC746F /* JSTag.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				E81163471FAE0B28006FD738 /* GlobalExtensions.swift in Sources */,
 				E8287B1D1FAFF70C00FF364C /* JSButtonState.swift in Sources */,
 				E86C8E541FADCCE600BBCA3D /* PMBasicSetting.swift in Sources */,
+				4B6DF830230E54CC00DC746F /* JSTag.swift in Sources */,
 				E8DC08CD1FAEBE1E00241F2F /* JSHeaderButton.swift in Sources */,
 				E8ADFEAF1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift in Sources */,
 				E86DC3C51FACA67B003DF80A /* AppDelegate.swift in Sources */,
@@ -566,6 +570,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DQ777MDT3;
 				INFOPLIST_FILE = JSPopoverMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wjunshuo.JSPopoverMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -581,6 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DQ777MDT3;
 				INFOPLIST_FILE = JSPopoverMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wjunshuo.JSPopoverMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

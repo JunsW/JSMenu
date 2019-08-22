@@ -116,7 +116,7 @@ extension JSModalTextField {
         dismissA() { self.confirmed?(self.textField.text ?? "") }
     }
 }
-// Mark: - Presentation
+// MARK: - Presentation
 extension JSModalTextField {
     public func show(onView view: UIView, completion: (()->Void)?) {
         view.addSubview(backMask)

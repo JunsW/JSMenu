@@ -26,7 +26,8 @@ class MainViewController: UIViewController  {
         
         setupDisplayer()
         view.addSubview(displayerLabel)
-        popoverView = JSPopoverMenuView(height: 120, data: defaultData)
+        popoverView = JSPopoverMenuView(tags: defaultData)
+        JSPopoverMenuView(data: defaultData.enumerated().map(){ JSDefaultTag(id: $0, title: $1) })
         popoverView.delegate = self
     }
 
@@ -42,7 +43,7 @@ class MainViewController: UIViewController  {
         displayerLabel.numberOfLines = 1
         displayerLabel.textAlignment = .center
     }
-    // Mark: - Button in the middle of header
+    // MARK: - Button in the middle of header
     
     func setupMidButton() {
         navigationController?.navigationBar.isTranslucent = false
