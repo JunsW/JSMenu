@@ -190,7 +190,7 @@ extension JSPopoverMenuView {
         dynamicData.remove(at: index.row)
         dynamicData.insert(element, at: toIndex.row)
         
-        print("move: \(index), to index: \(toIndex), dynamicData: \(dynamicData)")
+//        print("move: \(index), to index: \(toIndex), dynamicData: \(dynamicData)")
         menuCollection.moveItem(at: index, to: toIndex)
         
     }

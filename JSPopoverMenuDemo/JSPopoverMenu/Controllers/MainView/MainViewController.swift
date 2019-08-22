@@ -27,7 +27,6 @@ class MainViewController: UIViewController  {
         setupDisplayer()
         view.addSubview(displayerLabel)
         popoverView = JSPopoverMenuView(tags: defaultData)
-        JSPopoverMenuView(data: defaultData.enumerated().map(){ JSDefaultTag(id: $0, title: $1) })
         popoverView.delegate = self
     }
 
