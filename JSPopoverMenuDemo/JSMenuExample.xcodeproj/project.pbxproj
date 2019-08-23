@@ -145,7 +145,7 @@
 		4BBABC64230F9F25001A7C09 /* PopoverView */ = {
 			isa = PBXGroup;
 			children = (
-				4BBABC65230F9F25001A7C09 /* Protocal */,
+				4BBABC66230F9F25001A7C09 /* PopoverMenuDelegate.swift */,
 				4BBABC67230F9F25001A7C09 /* PMBasicSetting.swift */,
 				4BBABC68230F9F25001A7C09 /* PMCollectionViewProtocals.swift */,
 				4BBABC69230F9F25001A7C09 /* PMPresentation.swift */,
@@ -155,14 +155,6 @@
 				4BBABC6D230F9F25001A7C09 /* JSHeaderButton.swift */,
 			);
 			path = PopoverView;
-			sourceTree = "<group>";
-		};
-		4BBABC65230F9F25001A7C09 /* Protocal */ = {
-			isa = PBXGroup;
-			children = (
-				4BBABC66230F9F25001A7C09 /* PopoverMenuDelegate.swift */,
-			);
-			path = Protocal;
 			sourceTree = "<group>";
 		};
 		E8287B181FAFF5B800FF364C /* Controllers */ = {
