@@ -56,13 +56,13 @@ open class JSPopoverMenuView: UIView {
     internal var isCollectionViewEditing = false
     
     // MARK: - Events
-    convenience init(height: CGFloat = 150, tags: [String]) {
+    convenience public init(height: CGFloat = 150, tags: [String]) {
         self.init(height: height, data: tags.enumerated().map(){ JSDefaultTag(id: $0, title: $1) })
     }
-    convenience init(height: CGFloat = 150, data: [JSTag]) {
+    convenience public init(height: CGFloat = 150, data: [JSTag]) {
         self.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height), data: data)
     }
-    init(frame: CGRect, data: [JSTag]) {
+    public init(frame: CGRect, data: [JSTag]) {
         super.init(frame: frame)
         backgroundColor = baseColor
         self.data = data
