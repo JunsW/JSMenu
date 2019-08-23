@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   
   s.ios.deployment_target = '9.0'
   s.source                = { :git => "https://github.com/JunsW/JSMenu.git", :tag => "1.1.1" }
-  s.source_files          = 'Source/**/*.swift'
+  s.source_files          = 'Source/**/*.{png, swift}'
 
 
   s.requires_arc          = true
