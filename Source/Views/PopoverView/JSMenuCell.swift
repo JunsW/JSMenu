@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JSMenuCell: UICollectionViewCell {
+open class JSMenuCell: UICollectionViewCell {
     var label: UILabel?
     var imageView: UIImageView?
     

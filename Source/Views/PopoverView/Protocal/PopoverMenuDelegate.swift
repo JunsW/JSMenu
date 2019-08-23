@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol JSPopoverMenuViewDelegate: NSObjectProtocol {
+public protocol JSPopoverMenuViewDelegate: NSObjectProtocol {
     var baseView: UIView { get }
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, didSelectedAt indexPath: IndexPath)
     func popoverMenu(_ popoverMenu: JSPopoverMenuView, updatedData data: [JSTag])

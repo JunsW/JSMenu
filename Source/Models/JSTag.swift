@@ -8,22 +8,22 @@
 
 import UIKit
 
-protocol JSTag {
+public protocol JSTag {
     var title: String { get set }
     var id: Int { get set }
 }
 
-class JSDefaultTag: JSTag {
+open class JSDefaultTag: JSTag {
     
-    var title: String
-    var id: Int
+    public var title: String
+    public var id: Int
     
     init(id: Int, title: String) {
         self.id = id
         self.title = title
     }
 }
-class JSImageTag: JSDefaultTag {
+open class JSImageTag: JSDefaultTag {
     
     var image: UIImage?
     
@@ -40,6 +40,6 @@ class JSImageTag: JSDefaultTag {
         return JSImageTag(id: Int.max-1, image: "dustbin")
     }
 }
-func ==(lhs: JSTag, rhs: JSTag) -> Bool {
+public func ==(lhs: JSTag, rhs: JSTag) -> Bool {
     return lhs.id == rhs.id
 }

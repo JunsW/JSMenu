@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum JSButtonState: String {
+public enum JSButtonState: String {
     case done = "Done"
     case reset = "Reset"
     case edit = "Edit"

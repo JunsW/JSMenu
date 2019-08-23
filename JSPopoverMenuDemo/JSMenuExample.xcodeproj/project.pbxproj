@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B6DF830230E54CC00DC746F /* JSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6DF82F230E54CC00DC746F /* JSTag.swift */; };
-		E81163471FAE0B28006FD738 /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81163461FAE0B28006FD738 /* GlobalExtensions.swift */; };
+		4BBABC6E230F9F25001A7C09 /* JSButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC5D230F9F25001A7C09 /* JSButtonState.swift */; };
+		4BBABC6F230F9F25001A7C09 /* JSTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC5E230F9F25001A7C09 /* JSTag.swift */; };
+		4BBABC70230F9F25001A7C09 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC5F230F9F25001A7C09 /* Extensions.swift */; };
+		4BBABC71230F9F25001A7C09 /* JSModalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC63230F9F25001A7C09 /* JSModalTextField.swift */; };
+		4BBABC72230F9F25001A7C09 /* PopoverMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC66230F9F25001A7C09 /* PopoverMenuDelegate.swift */; };
+		4BBABC73230F9F25001A7C09 /* PMBasicSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC67230F9F25001A7C09 /* PMBasicSetting.swift */; };
+		4BBABC74230F9F25001A7C09 /* PMCollectionViewProtocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC68230F9F25001A7C09 /* PMCollectionViewProtocals.swift */; };
+		4BBABC75230F9F25001A7C09 /* PMPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC69230F9F25001A7C09 /* PMPresentation.swift */; };
+		4BBABC76230F9F25001A7C09 /* PopoverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC6A230F9F25001A7C09 /* PopoverMenuView.swift */; };
+		4BBABC77230F9F25001A7C09 /* JSMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC6B230F9F25001A7C09 /* JSMenuCell.swift */; };
+		4BBABC78230F9F25001A7C09 /* PMGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC6C230F9F25001A7C09 /* PMGestureHandler.swift */; };
+		4BBABC79230F9F25001A7C09 /* JSHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBABC6D230F9F25001A7C09 /* JSHeaderButton.swift */; };
 		E81DC09E1FB3EB86007D8D22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E81DC0A01FB3EB86007D8D22 /* Localizable.strings */; };
-		E825841B1FAF00250048B66C /* PMGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E825841A1FAF00250048B66C /* PMGestureHandler.swift */; };
-		E8287B1D1FAFF70C00FF364C /* JSButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8287B1C1FAFF70C00FF364C /* JSButtonState.swift */; };
-		E83977C31FAEAABA00E5DCDB /* PopoverMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83977C21FAEAABA00E5DCDB /* PopoverMenuDelegate.swift */; };
 		E83977C81FAEAE3800E5DCDB /* MVPopoverMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83977C71FAEAE3800E5DCDB /* MVPopoverMenuDelegate.swift */; };
-		E86C8E501FADC60400BBCA3D /* PopoverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86C8E4F1FADC60400BBCA3D /* PopoverMenuView.swift */; };
-		E86C8E541FADCCE600BBCA3D /* PMBasicSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86C8E531FADCCE600BBCA3D /* PMBasicSetting.swift */; };
 		E86DC3C51FACA67B003DF80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3C41FACA67B003DF80A /* AppDelegate.swift */; };
 		E86DC3C71FACA67B003DF80A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3C61FACA67B003DF80A /* MainViewController.swift */; };
 		E86DC3CA1FACA67B003DF80A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86DC3C81FACA67B003DF80A /* Main.storyboard */; };
@@ -23,11 +28,6 @@
 		E86DC3CF1FACA67B003DF80A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86DC3CD1FACA67B003DF80A /* LaunchScreen.storyboard */; };
 		E86DC3DA1FACA67C003DF80A /* JSPopoverMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3D91FACA67C003DF80A /* JSPopoverMenuTests.swift */; };
 		E86DC3E51FACA67C003DF80A /* JSPopoverMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86DC3E41FACA67C003DF80A /* JSPopoverMenuUITests.swift */; };
-		E8A057A71FB3298B00F2BCC0 /* JSModalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */; };
-		E8ADFEAF1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADFEAE1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift */; };
-		E8ADFEB11FAE032F00821FB1 /* JSMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADFEB01FAE032F00821FB1 /* JSMenuCell.swift */; };
-		E8DC08CB1FAEB85800241F2F /* PMPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC08CA1FAEB85800241F2F /* PMPresentation.swift */; };
-		E8DC08CD1FAEBE1E00241F2F /* JSHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC08CC1FAEBE1E00241F2F /* JSHeaderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,34 +48,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B6DF82F230E54CC00DC746F /* JSTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSTag.swift; sourceTree = "<group>"; };
-		E81163461FAE0B28006FD738 /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		4BBABC5D230F9F25001A7C09 /* JSButtonState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSButtonState.swift; sourceTree = "<group>"; };
+		4BBABC5E230F9F25001A7C09 /* JSTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSTag.swift; sourceTree = "<group>"; };
+		4BBABC5F230F9F25001A7C09 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4BBABC60230F9F25001A7C09 /* JSMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMenu.h; sourceTree = "<group>"; };
+		4BBABC63230F9F25001A7C09 /* JSModalTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSModalTextField.swift; sourceTree = "<group>"; };
+		4BBABC66230F9F25001A7C09 /* PopoverMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMenuDelegate.swift; sourceTree = "<group>"; };
+		4BBABC67230F9F25001A7C09 /* PMBasicSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMBasicSetting.swift; sourceTree = "<group>"; };
+		4BBABC68230F9F25001A7C09 /* PMCollectionViewProtocals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMCollectionViewProtocals.swift; sourceTree = "<group>"; };
+		4BBABC69230F9F25001A7C09 /* PMPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMPresentation.swift; sourceTree = "<group>"; };
+		4BBABC6A230F9F25001A7C09 /* PopoverMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMenuView.swift; sourceTree = "<group>"; };
+		4BBABC6B230F9F25001A7C09 /* JSMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSMenuCell.swift; sourceTree = "<group>"; };
+		4BBABC6C230F9F25001A7C09 /* PMGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMGestureHandler.swift; sourceTree = "<group>"; };
+		4BBABC6D230F9F25001A7C09 /* JSHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSHeaderButton.swift; sourceTree = "<group>"; };
 		E81DC09F1FB3EB86007D8D22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E81DC0A11FB3EBB3007D8D22 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		E825841A1FAF00250048B66C /* PMGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMGestureHandler.swift; sourceTree = "<group>"; };
-		E8287B1C1FAFF70C00FF364C /* JSButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSButtonState.swift; sourceTree = "<group>"; };
-		E83977C21FAEAABA00E5DCDB /* PopoverMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuDelegate.swift; sourceTree = "<group>"; };
 		E83977C71FAEAE3800E5DCDB /* MVPopoverMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVPopoverMenuDelegate.swift; sourceTree = "<group>"; };
-		E86C8E4F1FADC60400BBCA3D /* PopoverMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuView.swift; sourceTree = "<group>"; };
-		E86C8E531FADCCE600BBCA3D /* PMBasicSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMBasicSetting.swift; sourceTree = "<group>"; };
-		E86DC3C11FACA67B003DF80A /* JSPopoverMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSPopoverMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E86DC3C11FACA67B003DF80A /* JSMenuExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSMenuExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86DC3C41FACA67B003DF80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E86DC3C61FACA67B003DF80A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E86DC3C91FACA67B003DF80A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E86DC3CB1FACA67B003DF80A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E86DC3CE1FACA67B003DF80A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E86DC3D01FACA67B003DF80A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E86DC3D51FACA67C003DF80A /* JSPopoverMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSPopoverMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E86DC3D51FACA67C003DF80A /* JSMenuExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSMenuExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86DC3D91FACA67C003DF80A /* JSPopoverMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPopoverMenuTests.swift; sourceTree = "<group>"; };
 		E86DC3DB1FACA67C003DF80A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E86DC3E01FACA67C003DF80A /* JSPopoverMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSPopoverMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E86DC3E01FACA67C003DF80A /* JSMenuExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSMenuExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86DC3E41FACA67C003DF80A /* JSPopoverMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSPopoverMenuUITests.swift; sourceTree = "<group>"; };
 		E86DC3E61FACA67C003DF80A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSModalTextField.swift; sourceTree = "<group>"; };
-		E8ADFEAE1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMCollectionViewProtocals.swift; sourceTree = "<group>"; };
-		E8ADFEB01FAE032F00821FB1 /* JSMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSMenuCell.swift; sourceTree = "<group>"; };
-		E8DC08CA1FAEB85800241F2F /* PMPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMPresentation.swift; sourceTree = "<group>"; };
-		E8DC08CC1FAEBE1E00241F2F /* JSHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSHeaderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,30 +104,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BBABC5B230F9F25001A7C09 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC5C230F9F25001A7C09 /* Models */,
+				4BBABC5F230F9F25001A7C09 /* Extensions.swift */,
+				4BBABC60230F9F25001A7C09 /* JSMenu.h */,
+				4BBABC61230F9F25001A7C09 /* Views */,
+			);
+			name = Source;
+			path = ../Source;
+			sourceTree = "<group>";
+		};
+		4BBABC5C230F9F25001A7C09 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC5D230F9F25001A7C09 /* JSButtonState.swift */,
+				4BBABC5E230F9F25001A7C09 /* JSTag.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4BBABC61230F9F25001A7C09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC62230F9F25001A7C09 /* JSModalTextField */,
+				4BBABC64230F9F25001A7C09 /* PopoverView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4BBABC62230F9F25001A7C09 /* JSModalTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC63230F9F25001A7C09 /* JSModalTextField.swift */,
+			);
+			path = JSModalTextField;
+			sourceTree = "<group>";
+		};
+		4BBABC64230F9F25001A7C09 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC65230F9F25001A7C09 /* Protocal */,
+				4BBABC67230F9F25001A7C09 /* PMBasicSetting.swift */,
+				4BBABC68230F9F25001A7C09 /* PMCollectionViewProtocals.swift */,
+				4BBABC69230F9F25001A7C09 /* PMPresentation.swift */,
+				4BBABC6A230F9F25001A7C09 /* PopoverMenuView.swift */,
+				4BBABC6B230F9F25001A7C09 /* JSMenuCell.swift */,
+				4BBABC6C230F9F25001A7C09 /* PMGestureHandler.swift */,
+				4BBABC6D230F9F25001A7C09 /* JSHeaderButton.swift */,
+			);
+			path = PopoverView;
+			sourceTree = "<group>";
+		};
+		4BBABC65230F9F25001A7C09 /* Protocal */ = {
+			isa = PBXGroup;
+			children = (
+				4BBABC66230F9F25001A7C09 /* PopoverMenuDelegate.swift */,
+			);
+			path = Protocal;
+			sourceTree = "<group>";
+		};
 		E8287B181FAFF5B800FF364C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E83977C41FAEADF100E5DCDB /* MainView */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E8287B191FAFF5BF00FF364C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E8A057A51FB3296B00F2BCC0 /* JSModalTextField */,
-				E86C8E551FADCCF900BBCA3D /* PopoverView */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E8287B1A1FAFF67000FF364C /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E8287B1C1FAFF70C00FF364C /* JSButtonState.swift */,
-				4B6DF82F230E54CC00DC746F /* JSTag.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E83977C41FAEADF100E5DCDB /* MainView */ = {
@@ -144,30 +188,16 @@
 				E86DC3CD1FACA67B003DF80A /* LaunchScreen.storyboard */,
 				E86DC3CB1FACA67B003DF80A /* Assets.xcassets */,
 				E86DC3C41FACA67B003DF80A /* AppDelegate.swift */,
-				E81163461FAE0B28006FD738 /* GlobalExtensions.swift */,
 				E86DC3C81FACA67B003DF80A /* Main.storyboard */,
 				E81DC0A01FB3EB86007D8D22 /* Localizable.strings */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
 		};
-		E86C8E551FADCCF900BBCA3D /* PopoverView */ = {
-			isa = PBXGroup;
-			children = (
-				E86C8E4F1FADC60400BBCA3D /* PopoverMenuView.swift */,
-				E825841A1FAF00250048B66C /* PMGestureHandler.swift */,
-				E86C8E531FADCCE600BBCA3D /* PMBasicSetting.swift */,
-				E8DC08CA1FAEB85800241F2F /* PMPresentation.swift */,
-				E8DC08CC1FAEBE1E00241F2F /* JSHeaderButton.swift */,
-				E8DC08C91FAEAF5E00241F2F /* CollectionView */,
-				E8DC08C81FAEAF4E00241F2F /* Protocal */,
-			);
-			path = PopoverView;
-			sourceTree = "<group>";
-		};
 		E86DC3B81FACA67B003DF80A = {
 			isa = PBXGroup;
 			children = (
+				4BBABC5B230F9F25001A7C09 /* Source */,
 				E86DC3C31FACA67B003DF80A /* JSPopoverMenu */,
 				E86DC3D81FACA67C003DF80A /* JSPopoverMenuTests */,
 				E86DC3E31FACA67C003DF80A /* JSPopoverMenuUITests */,
@@ -178,9 +208,9 @@
 		E86DC3C21FACA67B003DF80A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E86DC3C11FACA67B003DF80A /* JSPopoverMenu.app */,
-				E86DC3D51FACA67C003DF80A /* JSPopoverMenuTests.xctest */,
-				E86DC3E01FACA67C003DF80A /* JSPopoverMenuUITests.xctest */,
+				E86DC3C11FACA67B003DF80A /* JSMenuExample.app */,
+				E86DC3D51FACA67C003DF80A /* JSMenuExampleTests.xctest */,
+				E86DC3E01FACA67C003DF80A /* JSMenuExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,9 +218,7 @@
 		E86DC3C31FACA67B003DF80A /* JSPopoverMenu */ = {
 			isa = PBXGroup;
 			children = (
-				E8287B1A1FAFF67000FF364C /* Models */,
 				E8287B181FAFF5B800FF364C /* Controllers */,
-				E8287B191FAFF5BF00FF364C /* Views */,
 				E83977C51FAEAE0200E5DCDB /* Supports */,
 				E86DC3D01FACA67B003DF80A /* Info.plist */,
 			);
@@ -215,37 +243,12 @@
 			path = JSPopoverMenuUITests;
 			sourceTree = "<group>";
 		};
-		E8A057A51FB3296B00F2BCC0 /* JSModalTextField */ = {
-			isa = PBXGroup;
-			children = (
-				E8A057A61FB3298B00F2BCC0 /* JSModalTextField.swift */,
-			);
-			path = JSModalTextField;
-			sourceTree = "<group>";
-		};
-		E8DC08C81FAEAF4E00241F2F /* Protocal */ = {
-			isa = PBXGroup;
-			children = (
-				E83977C21FAEAABA00E5DCDB /* PopoverMenuDelegate.swift */,
-			);
-			path = Protocal;
-			sourceTree = "<group>";
-		};
-		E8DC08C91FAEAF5E00241F2F /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				E8ADFEAE1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift */,
-				E8ADFEB01FAE032F00821FB1 /* JSMenuCell.swift */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E86DC3C01FACA67B003DF80A /* JSPopoverMenu */ = {
+		E86DC3C01FACA67B003DF80A /* JSMenuExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E86DC3E91FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenu" */;
+			buildConfigurationList = E86DC3E91FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExample" */;
 			buildPhases = (
 				E86DC3BD1FACA67B003DF80A /* Sources */,
 				E86DC3BE1FACA67B003DF80A /* Frameworks */,
@@ -255,14 +258,14 @@
 			);
 			dependencies = (
 			);
-			name = JSPopoverMenu;
+			name = JSMenuExample;
 			productName = JSPopoverMenu;
-			productReference = E86DC3C11FACA67B003DF80A /* JSPopoverMenu.app */;
+			productReference = E86DC3C11FACA67B003DF80A /* JSMenuExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E86DC3D41FACA67C003DF80A /* JSPopoverMenuTests */ = {
+		E86DC3D41FACA67C003DF80A /* JSMenuExampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E86DC3EC1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenuTests" */;
+			buildConfigurationList = E86DC3EC1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExampleTests" */;
 			buildPhases = (
 				E86DC3D11FACA67C003DF80A /* Sources */,
 				E86DC3D21FACA67C003DF80A /* Frameworks */,
@@ -273,14 +276,14 @@
 			dependencies = (
 				E86DC3D71FACA67C003DF80A /* PBXTargetDependency */,
 			);
-			name = JSPopoverMenuTests;
+			name = JSMenuExampleTests;
 			productName = JSPopoverMenuTests;
-			productReference = E86DC3D51FACA67C003DF80A /* JSPopoverMenuTests.xctest */;
+			productReference = E86DC3D51FACA67C003DF80A /* JSMenuExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E86DC3DF1FACA67C003DF80A /* JSPopoverMenuUITests */ = {
+		E86DC3DF1FACA67C003DF80A /* JSMenuExampleUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E86DC3EF1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenuUITests" */;
+			buildConfigurationList = E86DC3EF1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExampleUITests" */;
 			buildPhases = (
 				E86DC3DC1FACA67C003DF80A /* Sources */,
 				E86DC3DD1FACA67C003DF80A /* Frameworks */,
@@ -291,9 +294,9 @@
 			dependencies = (
 				E86DC3E21FACA67C003DF80A /* PBXTargetDependency */,
 			);
-			name = JSPopoverMenuUITests;
+			name = JSMenuExampleUITests;
 			productName = JSPopoverMenuUITests;
-			productReference = E86DC3E01FACA67C003DF80A /* JSPopoverMenuUITests.xctest */;
+			productReference = E86DC3E01FACA67C003DF80A /* JSMenuExampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -322,7 +325,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E86DC3BC1FACA67B003DF80A /* Build configuration list for PBXProject "JSPopoverMenu" */;
+			buildConfigurationList = E86DC3BC1FACA67B003DF80A /* Build configuration list for PBXProject "JSMenuExample" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -336,9 +339,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E86DC3C01FACA67B003DF80A /* JSPopoverMenu */,
-				E86DC3D41FACA67C003DF80A /* JSPopoverMenuTests */,
-				E86DC3DF1FACA67C003DF80A /* JSPopoverMenuUITests */,
+				E86DC3C01FACA67B003DF80A /* JSMenuExample */,
+				E86DC3D41FACA67C003DF80A /* JSMenuExampleTests */,
+				E86DC3DF1FACA67C003DF80A /* JSMenuExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -376,21 +379,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8ADFEB11FAE032F00821FB1 /* JSMenuCell.swift in Sources */,
-				E8DC08CB1FAEB85800241F2F /* PMPresentation.swift in Sources */,
+				4BBABC6E230F9F25001A7C09 /* JSButtonState.swift in Sources */,
+				4BBABC78230F9F25001A7C09 /* PMGestureHandler.swift in Sources */,
+				4BBABC75230F9F25001A7C09 /* PMPresentation.swift in Sources */,
+				4BBABC73230F9F25001A7C09 /* PMBasicSetting.swift in Sources */,
+				4BBABC76230F9F25001A7C09 /* PopoverMenuView.swift in Sources */,
+				4BBABC70230F9F25001A7C09 /* Extensions.swift in Sources */,
+				4BBABC77230F9F25001A7C09 /* JSMenuCell.swift in Sources */,
 				E86DC3C71FACA67B003DF80A /* MainViewController.swift in Sources */,
-				E8A057A71FB3298B00F2BCC0 /* JSModalTextField.swift in Sources */,
-				E81163471FAE0B28006FD738 /* GlobalExtensions.swift in Sources */,
-				E8287B1D1FAFF70C00FF364C /* JSButtonState.swift in Sources */,
-				E86C8E541FADCCE600BBCA3D /* PMBasicSetting.swift in Sources */,
-				4B6DF830230E54CC00DC746F /* JSTag.swift in Sources */,
-				E8DC08CD1FAEBE1E00241F2F /* JSHeaderButton.swift in Sources */,
-				E8ADFEAF1FADFC4B00821FB1 /* PMCollectionViewProtocals.swift in Sources */,
+				4BBABC6F230F9F25001A7C09 /* JSTag.swift in Sources */,
+				4BBABC71230F9F25001A7C09 /* JSModalTextField.swift in Sources */,
 				E86DC3C51FACA67B003DF80A /* AppDelegate.swift in Sources */,
-				E86C8E501FADC60400BBCA3D /* PopoverMenuView.swift in Sources */,
-				E83977C31FAEAABA00E5DCDB /* PopoverMenuDelegate.swift in Sources */,
 				E83977C81FAEAE3800E5DCDB /* MVPopoverMenuDelegate.swift in Sources */,
-				E825841B1FAF00250048B66C /* PMGestureHandler.swift in Sources */,
+				4BBABC72230F9F25001A7C09 /* PopoverMenuDelegate.swift in Sources */,
+				4BBABC74230F9F25001A7C09 /* PMCollectionViewProtocals.swift in Sources */,
+				4BBABC79230F9F25001A7C09 /* JSHeaderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,12 +418,12 @@
 /* Begin PBXTargetDependency section */
 		E86DC3D71FACA67C003DF80A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E86DC3C01FACA67B003DF80A /* JSPopoverMenu */;
+			target = E86DC3C01FACA67B003DF80A /* JSMenuExample */;
 			targetProxy = E86DC3D61FACA67C003DF80A /* PBXContainerItemProxy */;
 		};
 		E86DC3E21FACA67C003DF80A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E86DC3C01FACA67B003DF80A /* JSPopoverMenu */;
+			target = E86DC3C01FACA67B003DF80A /* JSMenuExample */;
 			targetProxy = E86DC3E11FACA67C003DF80A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -608,7 +611,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSPopoverMenu.app/JSPopoverMenu";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSMenuExample.app/JSMenuExample";
 			};
 			name = Debug;
 		};
@@ -625,7 +628,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSPopoverMenu.app/JSPopoverMenu";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JSMenuExample.app/JSMenuExample";
 			};
 			name = Release;
 		};
@@ -664,7 +667,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E86DC3BC1FACA67B003DF80A /* Build configuration list for PBXProject "JSPopoverMenu" */ = {
+		E86DC3BC1FACA67B003DF80A /* Build configuration list for PBXProject "JSMenuExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E86DC3E71FACA67C003DF80A /* Debug */,
@@ -673,7 +676,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E86DC3E91FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenu" */ = {
+		E86DC3E91FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E86DC3EA1FACA67C003DF80A /* Debug */,
@@ -682,7 +685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E86DC3EC1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenuTests" */ = {
+		E86DC3EC1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E86DC3ED1FACA67C003DF80A /* Debug */,
@@ -691,7 +694,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E86DC3EF1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSPopoverMenuUITests" */ = {
+		E86DC3EF1FACA67C003DF80A /* Build configuration list for PBXNativeTarget "JSMenuExampleUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E86DC3F01FACA67C003DF80A /* Debug */,

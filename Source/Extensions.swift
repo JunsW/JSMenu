@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    class func from(hex: Int) -> UIColor {
+    internal class func from(hex: Int) -> UIColor {
         let r = (hex & 0xff0000) >> 16
         let g = (hex & 0x00ff00) >> 8
         let b = hex & 0x0000ff
@@ -17,15 +17,15 @@ extension UIColor {
     }
 }
 extension IndexPath {
-    static func ofRow(_ row: Int) -> IndexPath {
+    static internal func ofRow(_ row: Int) -> IndexPath {
         return IndexPath(row: row, section: 0)
     }
 }
 extension CGRect {
-    func scale(x: CGFloat ,y: CGFloat) -> CGRect {
+    internal func scale(x: CGFloat ,y: CGFloat) -> CGRect {
         return CGRect(origin: origin, size: CGSize(width: width*x, height: height*y))
     }
-    func move(x: CGFloat, y: CGFloat) -> CGRect {
+    internal func move(x: CGFloat, y: CGFloat) -> CGRect {
         return CGRect(x: origin.x + x, y: origin.y + y, width: width, height: height)
     }
 }

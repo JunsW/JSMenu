@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JSModalTextField: UIView {
+open class JSModalTextField: UIView {
     
     fileprivate var backMask: UIView!
     fileprivate var textField: UITextField!
@@ -33,7 +33,7 @@ class JSModalTextField: UIView {
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -145,11 +145,11 @@ extension JSModalTextField {
     }
 }
 extension JSModalTextField: UITextFieldDelegate {
-    internal func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         isEditing = true
         return true
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let closure = shouldChangeCharacters {
             return closure(textField)
         } else {
