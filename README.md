@@ -26,7 +26,7 @@ __Add New Tag__
 	use_frameworks!
 
 	target '<Your Target Name>' do
-   		pod 'JSPopoverMenu', '~> 1.1' //
+   		pod 'JSMenu', '~> 1.1.1'
 	end
 	
 ### Manual

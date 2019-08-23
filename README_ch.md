@@ -23,7 +23,7 @@ __添加新标签__
 	use_frameworks!
 
 	target '<Your Target Name>' do
-   		pod 'JSPopoverMenu', '~> 1.0.1' //
+   		pod 'JSMenu', '~> 1.1.1'
 	end
 	
 ### 手动
