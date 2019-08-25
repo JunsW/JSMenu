@@ -27,17 +27,19 @@ open class JSImageTag: JSDefaultTag {
     
     var image: UIImage?
     
-    init(id: Int, image name: String) {
-        image = UIImage(named: name)
+    convenience init(id: Int, name: String) {
+        self.init(id: id, image: UIImage(named: name))
+    }
+    init(id: Int, image: UIImage?) {
+        self.image = image
         super.init(id: id, title: "")
     }
-    
     static var addButton: JSImageTag {
-        return JSImageTag(id: Int.max-2, image: "cross")
+        return JSImageTag(id: Int.max-2, image: JSMenuBundle.image(.add))
     }
     
     static var deleteButton: JSImageTag {
-        return JSImageTag(id: Int.max-1, image: "dustbin")
+        return JSImageTag(id: Int.max-1, image: JSMenuBundle.image(.dustbin))
     }
 }
 public func ==(lhs: JSTag, rhs: JSTag) -> Bool {
