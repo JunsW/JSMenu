@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   
   s.ios.deployment_target = '9.0'
   s.source                = { :git => "https://github.com/JunsW/JSMenu.git", :tag => "1.1.1" }
-  s.source_files          = 'Source/**/*.swift','Source/Icons/*.png'
-
+  s.source_files          = 'Source/**/*.swift'
+  s.resource              = 'Resource/JSMenu.bundle'
 
   s.requires_arc          = true
   s.framework             = "UIKit"
